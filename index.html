@@ -1,26 +1,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Hello World</title>
-<script src="./jquery.js"></script>
-<script type="text/javascript">
-	$(document).ready(function() {
-		$("#hidden").load("http://www.360kb.com/kb/2_122.html #storybox .v_story div pre",
-			function() {
-				var patt1 = new RegExp(/\d+\.\d+\.\d+\.\d+/);
-				var html = $("#hidden").html();
-				var ip = patt1.exec(html);
-				$("#hidden").remove();
-				alert(ip);
-				//window.location.href = 'http://'+ ip + '/';
-			});
-		$.getJSON("http://www.360kb.com/kb/2_122.html", function(data){
-			alert(data);
-		})
-	});
+<title>任务失败的好离谱，JS并不能很方便的跨域</title>
 </script>
 </head>
 <body>
-	<div id="hidden"></div>
+	<a href='http://www.360kb.com/kb/2_122.html' >Click to browse</a>
 </body>
 </html>
