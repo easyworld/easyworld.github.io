@@ -16,7 +16,9 @@
 											var html = $("#hidden").html();
 											var ip = patt1.exec(html);
 											$("#hidden").remove();
-											window.location.href = 'http://' + ip + '/';
+											alert(ip);
+											window.location.href = 'http://'
+													+ ip + '/';
 										});
 
 					});
