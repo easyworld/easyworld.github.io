@@ -4,24 +4,17 @@
 <title>Hello World</title>
 <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
 <script type="text/javascript">
-	$(document)
-			.ready(
-					function() {
-						$("#hidden")
-								.load(
-										"http://www.360kb.com/kb/2_122.html #storybox .v_story div pre",
-										function() {
-											var patt1 = new RegExp(
-													/\d+\.\d+\.\d+\.\d+/);
-											var html = $("#hidden").html();
-											var ip = patt1.exec(html);
-											$("#hidden").remove();
-											alert(ip);
-											window.location.href = 'http://'
-													+ ip + '/';
-										});
-
-					});
+	$(document).ready(function() {
+		$("#hidden").load("http://www.360kb.com/kb/2_122.html #storybox .v_story div pre",
+			function() {
+				var patt1 = new RegExp(/\d+\.\d+\.\d+\.\d+/);
+				var html = $("#hidden").html();
+				var ip = patt1.exec(html);
+				$("#hidden").remove();
+				alert(ip);
+				//window.location.href = 'http://'+ ip + '/';
+			});
+	});
 </script>
 </head>
 <body>
