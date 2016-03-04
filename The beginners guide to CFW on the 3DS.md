@@ -50,6 +50,7 @@ These are the features of RXTools:
 * Support for sysNAND, in case an emuNAND is not found
 * AGB (GBA Virtual Console) Support
 * TWL (DSiWare/DS Cardriges) Support
+
 It works from Firmware 4.1 to 9.2 and is maintained by Roxas75
 
 For this CFW to work you will need slot0x25KeyX.bin  (3DS 7.x.x Decryption Key, Just google it) and firmware.bin (RXTools gives you a program to download it).
