@@ -1,0 +1,1583 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>宝可梦小助手</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.18/dist/css/bootstrap-select.min.css">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">宝可梦小助手</a>
+                <button id="exportPS" type="button" class="btn btn-default navbar-btn" onclick="exportPS()"
+                    style="position: absolute; right: 0;margin-right: 8px;">导出</button>
+            </div>
+
+        </div><!-- /.container-fluid -->
+    </nav>
+    <div class="container">
+        <div>
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab"
+                        data-toggle="tab">基础</a></li>
+                <li role="presentation"><a href="#ivev" aria-controls="ivev" role="tab" data-toggle="tab">能力值</a></li>
+                <li role="presentation"><a href="#moves" aria-controls="moves" role="tab" data-toggle="tab">招式</a></li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="home">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td>名称</td>
+                                <td>
+                                    <select id="species" class="selectpicker" data-live-search="true" data-width="auto">
+                                        <option value='Charmander'>小火龙</option>
+                                        <option value='Charmeleon'>火恐龙</option>
+                                        <option value='Charizard'>喷火龙</option>
+                                        <option value='Pikachu'>皮卡丘</option>
+                                        <option value='Raichu'>雷丘</option>
+                                        <option value='Jigglypuff'>胖丁</option>
+                                        <option value='Wigglytuff'>胖可丁</option>
+                                        <option value='Venonat'>毛球</option>
+                                        <option value='Venomoth'>摩鲁蛾</option>
+                                        <option value='Diglett'>地鼠</option>
+                                        <option value='Dugtrio'>三地鼠</option>
+                                        <option value='Meowth'>喵喵</option>
+                                        <option value='Persian'>猫老大</option>
+                                        <option value='Psyduck'>可达鸭</option>
+                                        <option value='Golduck'>哥达鸭</option>
+                                        <option value='Mankey'>猴怪</option>
+                                        <option value='Primeape'>火暴猴</option>
+                                        <option value='Growlithe'>卡蒂狗</option>
+                                        <option value='Arcanine'>风速狗</option>
+                                        <option value='Slowpoke'>呆呆兽</option>
+                                        <option value='Slowbro'>呆壳兽</option>
+                                        <option value='Magnemite'>小磁怪</option>
+                                        <option value='Magneton'>三合一磁怪</option>
+                                        <option value='Grimer'>臭泥</option>
+                                        <option value='Muk'>臭臭泥</option>
+                                        <option value='Shellder'>大舌贝</option>
+                                        <option value='Cloyster'>刺甲贝</option>
+                                        <option value='Gastly'>鬼斯</option>
+                                        <option value='Haunter'>鬼斯通</option>
+                                        <option value='Gengar'>耿鬼</option>
+                                        <option value='Drowzee'>催眠貘</option>
+                                        <option value='Hypno'>引梦貘人</option>
+                                        <option value='Voltorb'>霹雳电球</option>
+                                        <option value='Electrode'>顽皮雷弹</option>
+                                        <option value='Chansey'>吉利蛋</option>
+                                        <option value='Scyther'>飞天螳螂</option>
+                                        <option value='Tauros'>肯泰罗</option>
+                                        <option value='Magikarp'>鲤鱼王</option>
+                                        <option value='Gyarados'>暴鲤龙</option>
+                                        <option value='Ditto'>百变怪</option>
+                                        <option value='Eevee'>伊布</option>
+                                        <option value='Vaporeon'>水伊布</option>
+                                        <option value='Jolteon'>雷伊布</option>
+                                        <option value='Flareon'>火伊布</option>
+                                        <option value='Articuno'>急冻鸟</option>
+                                        <option value='Zapdos'>闪电鸟</option>
+                                        <option value='Moltres'>火焰鸟</option>
+                                        <option value='Dratini'>迷你龙</option>
+                                        <option value='Dragonair'>哈克龙</option>
+                                        <option value='Dragonite'>快龙</option>
+                                        <option value='Mewtwo'>超梦</option>
+                                        <option value='Mew'>梦幻</option>
+                                        <option value='Cyndaquil'>火球鼠</option>
+                                        <option value='Quilava'>火岩鼠</option>
+                                        <option value='Typhlosion'>火暴兽</option>
+                                        <option value='Pichu'>皮丘</option>
+                                        <option value='Igglybuff'>宝宝丁</option>
+                                        <option value='Mareep'>咩利羊</option>
+                                        <option value='Flaaffy'>茸茸羊</option>
+                                        <option value='Ampharos'>电龙</option>
+                                        <option value='Marill'>玛力露</option>
+                                        <option value='Azumarill'>玛力露丽</option>
+                                        <option value='Sudowoodo'>树才怪</option>
+                                        <option value='Hoppip'>毽子草</option>
+                                        <option value='Skiploom'>毽子花</option>
+                                        <option value='Jumpluff'>毽子棉</option>
+                                        <option value='Sunkern'>向日种子</option>
+                                        <option value='Sunflora'>向日花怪</option>
+                                        <option value='Wooper'>乌波</option>
+                                        <option value='Quagsire'>沼王</option>
+                                        <option value='Espeon'>太阳伊布</option>
+                                        <option value='Umbreon'>月亮伊布</option>
+                                        <option value='Murkrow'>黑暗鸦</option>
+                                        <option value='Slowking'>呆呆王</option>
+                                        <option value='Misdreavus'>梦妖</option>
+                                        <option value='Girafarig'>麒麟奇</option>
+                                        <option value='Pineco'>榛果球</option>
+                                        <option value='Forretress'>佛烈托斯</option>
+                                        <option value='Dunsparce'>土龙弟弟</option>
+                                        <option value='Qwilfish'>千针鱼</option>
+                                        <option value='Scizor'>巨钳螳螂</option>
+                                        <option value='Heracross'>赫拉克罗斯</option>
+                                        <option value='Sneasel'>狃拉</option>
+                                        <option value='Teddiursa'>熊宝宝</option>
+                                        <option value='Ursaring'>圈圈熊</option>
+                                        <option value='Delibird'>信使鸟</option>
+                                        <option value='Houndour'>戴鲁比</option>
+                                        <option value='Houndoom'>黑鲁加</option>
+                                        <option value='Phanpy'>小小象</option>
+                                        <option value='Donphan'>顿甲</option>
+                                        <option value='Stantler'>惊角鹿</option>
+                                        <option value='Blissey'>幸福蛋</option>
+                                        <option value='Larvitar'>幼基拉斯</option>
+                                        <option value='Pupitar'>沙基拉斯</option>
+                                        <option value='Tyranitar'>班基拉斯</option>
+                                        <option value='Wingull'>长翅鸥</option>
+                                        <option value='Pelipper'>大嘴鸥</option>
+                                        <option value='Ralts'>拉鲁拉丝</option>
+                                        <option value='Kirlia'>奇鲁莉安</option>
+                                        <option value='Gardevoir'>沙奈朵</option>
+                                        <option value='Surskit'>溜溜糖球</option>
+                                        <option value='Masquerain'>雨翅蛾</option>
+                                        <option value='Shroomish'>蘑蘑菇</option>
+                                        <option value='Breloom'>斗笠菇</option>
+                                        <option value='Slakoth'>懒人獭</option>
+                                        <option value='Vigoroth'>过动猿</option>
+                                        <option value='Slaking'>请假王</option>
+                                        <option value='Makuhita'>幕下力士</option>
+                                        <option value='Hariyama'>铁掌力士</option>
+                                        <option value='Azurill'>露力丽</option>
+                                        <option value='Sableye'>勾魂眼</option>
+                                        <option value='Meditite'>玛沙那</option>
+                                        <option value='Medicham'>恰雷姆</option>
+                                        <option value='Gulpin'>溶食兽</option>
+                                        <option value='Swalot'>吞食兽</option>
+                                        <option value='Numel'>呆火驼</option>
+                                        <option value='Camerupt'>喷火驼</option>
+                                        <option value='Torkoal'>煤炭龟</option>
+                                        <option value='Spoink'>跳跳猪</option>
+                                        <option value='Grumpig'>噗噗猪</option>
+                                        <option value='Cacnea'>刺球仙人掌</option>
+                                        <option value='Cacturne'>梦歌仙人掌</option>
+                                        <option value='Swablu'>青绵鸟</option>
+                                        <option value='Altaria'>七夕青鸟</option>
+                                        <option value='Zangoose'>猫鼬斩</option>
+                                        <option value='Seviper'>饭匙蛇</option>
+                                        <option value='Barboach'>泥泥鳅</option>
+                                        <option value='Whiscash'>鲶鱼王</option>
+                                        <option value='Shuppet'>怨影娃娃</option>
+                                        <option value='Banette'>诅咒娃娃</option>
+                                        <option value='Tropius'>热带龙</option>
+                                        <option value='Snorunt'>雪童子</option>
+                                        <option value='Glalie'>冰鬼护</option>
+                                        <option value='Luvdisc'>爱心鱼</option>
+                                        <option value='Bagon'>宝贝龙</option>
+                                        <option value='Shelgon'>甲壳龙</option>
+                                        <option value='Salamence'>暴飞龙</option>
+                                        <option value='Kyogre'>盖欧卡</option>
+                                        <option value='Groudon'>固拉多</option>
+                                        <option value='Rayquaza'>烈空坐</option>
+                                        <option value='Starly'>姆克儿</option>
+                                        <option value='Staravia'>姆克鸟</option>
+                                        <option value='Staraptor'>姆克鹰</option>
+                                        <option value='Kricketot'>圆法师</option>
+                                        <option value='Kricketune'>音箱蟀</option>
+                                        <option value='Shinx'>小猫怪</option>
+                                        <option value='Luxio'>勒克猫</option>
+                                        <option value='Luxray'>伦琴猫</option>
+                                        <option value='Combee'>三蜜蜂</option>
+                                        <option value='Vespiquen'>蜂女王</option>
+                                        <option value='Pachirisu'>帕奇利兹</option>
+                                        <option value='Buizel'>泳圈鼬</option>
+                                        <option value='Floatzel'>浮潜鼬</option>
+                                        <option value='Shellos'>无壳海兔</option>
+                                        <option value='Gastrodon'>海兔兽</option>
+                                        <option value='Drifloon'>飘飘球</option>
+                                        <option value='Drifblim'>随风球</option>
+                                        <option value='Mismagius'>梦妖魔</option>
+                                        <option value='Honchkrow'>乌鸦头头</option>
+                                        <option value='Stunky'>臭鼬噗</option>
+                                        <option value='Skuntank'>坦克臭鼬</option>
+                                        <option value='Bronzor'>铜镜怪</option>
+                                        <option value='Bronzong'>青铜钟</option>
+                                        <option value='Bonsly'>盆才怪</option>
+                                        <option value='Happiny'>小福蛋</option>
+                                        <option value='Spiritomb'>花岩怪</option>
+                                        <option value='Gible'>圆陆鲨</option>
+                                        <option value='Gabite'>尖牙陆鲨</option>
+                                        <option value='Garchomp'>烈咬陆鲨</option>
+                                        <option value='Riolu'>利欧路</option>
+                                        <option value='Lucario'>路卡利欧</option>
+                                        <option value='Hippopotas'>沙河马</option>
+                                        <option value='Hippowdon'>河马兽</option>
+                                        <option value='Croagunk'>不良蛙</option>
+                                        <option value='Toxicroak'>毒骷蛙</option>
+                                        <option value='Finneon'>荧光鱼</option>
+                                        <option value='Lumineon'>霓虹鱼</option>
+                                        <option value='Snover'>雪笠怪</option>
+                                        <option value='Abomasnow'>暴雪王</option>
+                                        <option value='Weavile'>玛狃拉</option>
+                                        <option value='Magnezone'>自爆磁怪</option>
+                                        <option value='Leafeon'>叶伊布</option>
+                                        <option value='Glaceon'>冰伊布</option>
+                                        <option value='Gallade'>艾路雷朵</option>
+                                        <option value='Froslass'>雪妖女</option>
+                                        <option value='Rotom'>洛托姆</option>
+                                        <option value='Uxie'>由克希</option>
+                                        <option value='Mesprit'>艾姆利多</option>
+                                        <option value='Azelf'>亚克诺姆</option>
+                                        <option value='Dialga'>帝牙卢卡</option>
+                                        <option value='Palkia'>帕路奇亚</option>
+                                        <option value='Heatran'>席多蓝恩</option>
+                                        <option value='Giratina'>骑拉帝纳</option>
+                                        <option value='Cresselia'>克雷色利亚</option>
+                                        <option value='Arceus'>阿尔宙斯</option>
+                                        <option value='Oshawott'>水水獭</option>
+                                        <option value='Dewott'>双刃丸</option>
+                                        <option value='Samurott'>大剑鬼</option>
+                                        <option value='Petilil'>百合根娃娃</option>
+                                        <option value='Lilligant'>裙儿小姐</option>
+                                        <option value='Basculin'>野蛮鲈鱼</option>
+                                        <option value='Sandile'>黑眼鳄</option>
+                                        <option value='Krokorok'>混混鳄</option>
+                                        <option value='Krookodile'>流氓鳄</option>
+                                        <option value='Zorua'>索罗亚</option>
+                                        <option value='Zoroark'>索罗亚克</option>
+                                        <option value='Gothita'>哥德宝宝</option>
+                                        <option value='Gothorita'>哥德小童</option>
+                                        <option value='Gothitelle'>哥德小姐</option>
+                                        <option value='Deerling'>四季鹿</option>
+                                        <option value='Sawsbuck'>萌芽鹿</option>
+                                        <option value='Foongus'>哎呀球菇</option>
+                                        <option value='Amoonguss'>败露球菇</option>
+                                        <option value='Alomomola'>保姆曼波</option>
+                                        <option value='Tynamo'>麻麻小鱼</option>
+                                        <option value='Eelektrik'>麻麻鳗</option>
+                                        <option value='Eelektross'>麻麻鳗鱼王</option>
+                                        <option value='Axew'>牙牙</option>
+                                        <option value='Fraxure'>斧牙龙</option>
+                                        <option value='Haxorus'>双斧战龙</option>
+                                        <option value='Cubchoo'>喷嚏熊</option>
+                                        <option value='Beartic'>冻原熊</option>
+                                        <option value='Cryogonal'>几何雪花</option>
+                                        <option value='Pawniard'>驹刀小兵</option>
+                                        <option value='Bisharp'>劈斩司令</option>
+                                        <option value='Rufflet'>毛头小鹰</option>
+                                        <option value='Braviary'>勇士雄鹰</option>
+                                        <option value='Deino'>单首龙</option>
+                                        <option value='Zweilous'>双首暴龙</option>
+                                        <option value='Hydreigon'>三首恶龙</option>
+                                        <option value='Larvesta'>燃烧虫</option>
+                                        <option value='Volcarona'>火神蛾</option>
+                                        <option value='Tornadus'>龙卷云</option>
+                                        <option value='Thundurus'>雷电云</option>
+                                        <option value='Landorus'>土地云</option>
+                                        <option value='Meloetta'>美洛耶塔</option>
+                                        <option value='Chespin'>哈力栗</option>
+                                        <option value='Quilladin'>胖胖哈力</option>
+                                        <option value='Chesnaught'>布里卡隆</option>
+                                        <option value='Fennekin'>火狐狸</option>
+                                        <option value='Braixen'>长尾火狐</option>
+                                        <option value='Delphox'>妖火红狐</option>
+                                        <option value='Froakie'>呱呱泡蛙</option>
+                                        <option value='Frogadier'>呱头蛙</option>
+                                        <option value='Greninja'>甲贺忍蛙</option>
+                                        <option value='Fletchling'>小箭雀</option>
+                                        <option value='Fletchinder'>火箭雀</option>
+                                        <option value='Talonflame'>烈箭鹰</option>
+                                        <option value='Scatterbug'>粉蝶虫</option>
+                                        <option value='Spewpa'>粉蝶蛹</option>
+                                        <option value='Vivillon'>彩粉蝶</option>
+                                        <option value='Litleo'>小狮狮</option>
+                                        <option value='Pyroar'>火炎狮</option>
+                                        <option value='Flabébé'>花蓓蓓</option>
+                                        <option value='Floette'>花叶蒂</option>
+                                        <option value='Florges'>花洁夫人</option>
+                                        <option value='Skiddo'>坐骑小羊</option>
+                                        <option value='Gogoat'>坐骑山羊</option>
+                                        <option value='Skrelp'>垃垃藻</option>
+                                        <option value='Dragalge'>毒藻龙</option>
+                                        <option value='Clauncher'>铁臂枪虾</option>
+                                        <option value='Clawitzer'>钢炮臂虾</option>
+                                        <option value='Sylveon'>仙子伊布</option>
+                                        <option value='Hawlucha'>摔角鹰人</option>
+                                        <option value='Dedenne'>咚咚鼠</option>
+                                        <option value='Carbink'>小碎钻</option>
+                                        <option value='Goomy'>黏黏宝</option>
+                                        <option value='Sliggoo'>黏美儿</option>
+                                        <option value='Goodra'>黏美龙</option>
+                                        <option value='Klefki'>钥圈儿</option>
+                                        <option value='Bergmite'>冰宝</option>
+                                        <option value='Avalugg'>冰岩怪</option>
+                                        <option value='Noibat'>嗡蝠</option>
+                                        <option value='Noivern'>音波龙</option>
+                                        <option value='Diancie'>蒂安希</option>
+                                        <option value='Hoopa'>胡帕</option>
+                                        <option value='Volcanion'>波尔凯尼恩</option>
+                                        <option value='Rowlet'>木木枭</option>
+                                        <option value='Dartrix'>投羽枭</option>
+                                        <option value='Decidueye'>狙射树枭</option>
+                                        <option value='Yungoos'>猫鼬少</option>
+                                        <option value='Gumshoos'>猫鼬探长</option>
+                                        <option value='Crabrawler'>好胜蟹</option>
+                                        <option value='Crabominable'>好胜毛蟹</option>
+                                        <option value='Oricorio'>花舞鸟</option>
+                                        <option value='Rockruff'>岩狗狗</option>
+                                        <option value='Lycanroc'>鬃岩狼人</option>
+                                        <option value='Mareanie'>好坏星</option>
+                                        <option value='Toxapex'>超坏星</option>
+                                        <option value='Mudbray'>泥驴仔</option>
+                                        <option value='Mudsdale'>重泥挽马</option>
+                                        <option value='Fomantis'>伪螳草</option>
+                                        <option value='Lurantis'>兰螳花</option>
+                                        <option value='Salandit'>夜盗火蜥</option>
+                                        <option value='Salazzle'>焰后蜥</option>
+                                        <option value='Bounsweet'>甜竹竹</option>
+                                        <option value='Steenee'>甜舞妮</option>
+                                        <option value='Tsareena'>甜冷美后</option>
+                                        <option value='Oranguru'>智挥猩</option>
+                                        <option value='Passimian'>投掷猴</option>
+                                        <option value='Sandygast'>沙丘娃</option>
+                                        <option value='Palossand'>噬沙堡爷</option>
+                                        <option value='Komala'>树枕尾熊</option>
+                                        <option value='Mimikyu'>谜拟丘</option>
+                                        <option value='Bruxish'>磨牙彩皮鱼</option>
+                                        <option value='Magearna'>玛机雅娜</option>
+                                        <option value='Grookey'>敲音猴</option>
+                                        <option value='Thwackey'>啪咚猴</option>
+                                        <option value='Rillaboom'>轰擂金刚猩</option>
+                                        <option value='Scorbunny'>炎兔儿</option>
+                                        <option value='Raboot'>腾蹴小将</option>
+                                        <option value='Cinderace'>闪焰王牌</option>
+                                        <option value='Sobble'>泪眼蜥</option>
+                                        <option value='Drizzile'>变涩蜥</option>
+                                        <option value='Inteleon'>千面避役</option>
+                                        <option value='Skwovet'>贪心栗鼠</option>
+                                        <option value='Greedent'>藏饱栗鼠</option>
+                                        <option value='Rookidee'>稚山雀</option>
+                                        <option value='Corvisquire'>蓝鸦</option>
+                                        <option value='Corviknight'>钢铠鸦</option>
+                                        <option value='Chewtle'>咬咬龟</option>
+                                        <option value='Drednaw'>暴噬龟</option>
+                                        <option value='Rolycoly'>小炭仔</option>
+                                        <option value='Carkol'>大炭车</option>
+                                        <option value='Coalossal'>巨炭山</option>
+                                        <option value='Applin'>啃果虫</option>
+                                        <option value='Flapple'>苹裹龙</option>
+                                        <option value='Appletun'>丰蜜龙</option>
+                                        <option value='Silicobra'>沙包蛇</option>
+                                        <option value='Sandaconda'>沙螺蟒</option>
+                                        <option value='Arrokuda'>刺梭鱼</option>
+                                        <option value='Barraskewda'>戽斗尖梭</option>
+                                        <option value='Toxel'>电音婴</option>
+                                        <option value='Toxtricity'>颤弦蝾螈</option>
+                                        <option value='Sinistea'>来悲茶</option>
+                                        <option value='Polteageist'>怖思壶</option>
+                                        <option value='Hatenna'>迷布莉姆</option>
+                                        <option value='Hattrem'>提布莉姆</option>
+                                        <option value='Hatterene'>布莉姆温</option>
+                                        <option value='Impidimp'>捣蛋小妖</option>
+                                        <option value='Morgrem'>诈唬魔</option>
+                                        <option value='Grimmsnarl'>长毛巨魔</option>
+                                        <option value='Perrserker'>喵头目</option>
+                                        <option value='Falinks'>列阵兵</option>
+                                        <option value='Pincurchin'>啪嚓海胆</option>
+                                        <option value='Snom'>雪吞虫</option>
+                                        <option value='Frosmoth'>雪绒蛾</option>
+                                        <option value='Stonjourner'>巨石丁</option>
+                                        <option value='Eiscue'>冰砌鹅</option>
+                                        <option value='Indeedee'>爱管侍</option>
+                                        <option value='Cufant'>铜象</option>
+                                        <option value='Copperajah'>大王铜象</option>
+                                        <option value='Dreepy'>多龙梅西亚</option>
+                                        <option value='Drakloak'>多龙奇</option>
+                                        <option value='Dragapult'>多龙巴鲁托</option>
+                                        <option value='Zacian'>苍响</option>
+                                        <option value='Zamazenta'>藏玛然特</option>
+                                        <option value='Eternatus'>无极汰那</option>
+                                        <option value='Kubfu'>熊徒弟</option>
+                                        <option value='Urshifu'>武道熊师</option>
+                                        <option value='Zarude'>萨戮德</option>
+                                        <option value='Regieleki'>雷吉艾勒奇</option>
+                                        <option value='Regidrago'>雷吉铎拉戈</option>
+                                        <option value='Glastrier'>雪暴马</option>
+                                        <option value='Spectrier'>灵幽马</option>
+                                        <option value='Calyrex'>蕾冠王</option>
+                                        <option value='Wyrdeer'>诡角鹿</option>
+                                        <option value='Kleavor'>劈斧螳螂</option>
+                                        <option value='Ursaluna'>月月熊</option>
+                                        <option value='Basculegion'>幽尾玄鱼</option>
+                                        <option value='Sneasler'>大狃拉</option>
+                                        <option value='Overqwil'>万针鱼</option>
+                                        <option value='Enamorus'>眷恋云</option>
+                                        <option value='Sprigatito'>新叶喵</option>
+                                        <option value='Floragato'>蒂蕾喵</option>
+                                        <option value='Meowscarada'>魔幻假面喵</option>
+                                        <option value='Fuecoco'>呆火鳄</option>
+                                        <option value='Crocalor'>炙烫鳄</option>
+                                        <option value='Skeledirge'>骨纹巨声鳄</option>
+                                        <option value='Quaxly'>润水鸭</option>
+                                        <option value='Quaxwell'>涌跃鸭</option>
+                                        <option value='Quaquaval'>狂欢浪舞鸭</option>
+                                        <option value='Lechonk'>爱吃豚</option>
+                                        <option value='Oinkologne'>飘香豚</option>
+                                        <option value='Tarountula'>团珠蛛</option>
+                                        <option value='Spidops'>操陷蛛</option>
+                                        <option value='Nymble'>豆蟋蟀</option>
+                                        <option value='Lokix'>烈腿蝗</option>
+                                        <option value='Pawmi'>布拨</option>
+                                        <option value='Pawmo'>布土拨</option>
+                                        <option value='Pawmot'>巴布土拨</option>
+                                        <option value='Tandemaus'>一对鼠</option>
+                                        <option value='Maushold'>一家鼠</option>
+                                        <option value='Fidough'>狗仔包</option>
+                                        <option value='Dachsbun'>麻花犬</option>
+                                        <option value='Smoliv'>迷你芙</option>
+                                        <option value='Dolliv'>奥利纽</option>
+                                        <option value='Arboliva'>奥利瓦</option>
+                                        <option value='Squawkabilly'>怒鹦哥</option>
+                                        <option value='Nacli'>盐石宝</option>
+                                        <option value='Naclstack'>盐石垒</option>
+                                        <option value='Garganacl'>盐石巨灵</option>
+                                        <option value='Charcadet'>炭小侍</option>
+                                        <option value='Armarouge'>红莲铠骑</option>
+                                        <option value='Ceruledge'>苍炎刃鬼</option>
+                                        <option value='Tadbulb'>光蚪仔</option>
+                                        <option value='Bellibolt'>电肚蛙</option>
+                                        <option value='Wattrel'>电海燕</option>
+                                        <option value='Kilowattrel'>大电海燕</option>
+                                        <option value='Maschiff'>偶叫獒</option>
+                                        <option value='Mabosstiff'>獒教父</option>
+                                        <option value='Shroodle'>滋汁鼹</option>
+                                        <option value='Grafaiai'>涂标客</option>
+                                        <option value='Bramblin'>纳噬草</option>
+                                        <option value='Brambleghast'>怖纳噬草</option>
+                                        <option value='Toedscool'>原野水母</option>
+                                        <option value='Toedscruel'>陆地水母</option>
+                                        <option value='Klawf'>毛崖蟹</option>
+                                        <option value='Capsakid'>热辣娃</option>
+                                        <option value='Scovillain'>狠辣椒</option>
+                                        <option value='Rellor'>虫滚泥</option>
+                                        <option value='Rabsca'>虫甲圣</option>
+                                        <option value='Flittle'>飘飘雏</option>
+                                        <option value='Espathra'>超能艳鸵</option>
+                                        <option value='Tinkatink'>小锻匠</option>
+                                        <option value='Tinkatuff'>巧锻匠</option>
+                                        <option value='Tinkaton'>巨锻匠</option>
+                                        <option value='Wiglett'>海地鼠</option>
+                                        <option value='Wugtrio'>三海地鼠</option>
+                                        <option value='Bombirdier'>下石鸟</option>
+                                        <option value='Finizen'>波普海豚</option>
+                                        <option value='Palafin'>海豚侠</option>
+                                        <option value='Varoom'>噗隆隆</option>
+                                        <option value='Revavroom'>普隆隆姆</option>
+                                        <option value='Cyclizar'>摩托蜥</option>
+                                        <option value='Orthworm'>拖拖蚓</option>
+                                        <option value='Glimmet'>晶光芽</option>
+                                        <option value='Glimmora'>晶光花</option>
+                                        <option value='Greavard'>墓仔狗</option>
+                                        <option value='Houndstone'>墓扬犬</option>
+                                        <option value='Flamigo'>缠红鹤</option>
+                                        <option value='Cetoddle'>走鲸</option>
+                                        <option value='Cetitan'>浩大鲸</option>
+                                        <option value='Veluza'>轻身鳕</option>
+                                        <option value='Dondozo'>吃吼霸</option>
+                                        <option value='Tatsugiri'>米立龙</option>
+                                        <option value='Annihilape'>弃世猴</option>
+                                        <option value='Clodsire'>土王</option>
+                                        <option value='Farigiraf'>奇麒麟</option>
+                                        <option value='Dudunsparce'>土龙节节</option>
+                                        <option value='Kingambit'>仆刀将军</option>
+                                        <option value='Great Tusk'>雄伟牙</option>
+                                        <option value='Scream Tail'>吼叫尾</option>
+                                        <option value='Brute Bonnet'>猛恶菇</option>
+                                        <option value='Flutter Mane'>振翼发</option>
+                                        <option value='Slither Wing'>爬地翅</option>
+                                        <option value='Sandy Shocks'>沙铁皮</option>
+                                        <option value='Iron Treads'>铁辙迹</option>
+                                        <option value='Iron Bundle'>铁包袱</option>
+                                        <option value='Iron Hands'>铁臂膀</option>
+                                        <option value='Iron Jugulis'>铁脖颈</option>
+                                        <option value='Iron Moth'>铁毒蛾</option>
+                                        <option value='Iron Thorns'>铁荆棘</option>
+                                        <option value='Frigibax'>凉脊龙</option>
+                                        <option value='Arctibax'>冻脊龙</option>
+                                        <option value='Baxcalibur'>戟脊龙</option>
+                                        <option value='Gimmighoul'>索财灵</option>
+                                        <option value='Gholdengo'>赛富豪</option>
+                                        <option value='Wo-Chien'>古简蜗</option>
+                                        <option value='Chien-Pao'>古剑豹</option>
+                                        <option value='Ting-Lu'>古鼎鹿</option>
+                                        <option value='Chi-Yu'>古玉鱼</option>
+                                        <option value='Roaring Moon'>轰鸣月</option>
+                                        <option value='Iron Valiant'>铁武者</option>
+                                        <option value='Koraidon'>故勒顿</option>
+                                        <option value='Miraidon'>密勒顿</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>形态</td>
+                                <td>
+                                    <select class="selectpicker" data-width="auto">
+                                        <option>无</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>性别</td>
+                                <td>
+                                    <select id="gender" class="selectpicker" data-width="auto">
+                                        <option>无</option>
+                                        <option>公</option>
+                                        <option>母</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>持有物</td>
+                                <td>
+                                    <select id="heldItem" class="selectpicker" data-live-search="true"
+                                        data-width="auto">
+                                        <option value='None'>无</option>
+                                        <option value='Master Ball'>大师球</option>
+                                        <option value='Ultra Ball'>高级球</option>
+                                        <option value='Great Ball'>超级球</option>
+                                        <option value='Poké Ball'>精灵球</option>
+                                        <option value='Safari Ball'>狩猎球</option>
+                                        <option value='Net Ball'>捕网球</option>
+                                        <option value='Dive Ball'>潜水球</option>
+                                        <option value='Nest Ball'>巢穴球</option>
+                                        <option value='Repeat Ball'>重复球</option>
+                                        <option value='Timer Ball'>计时球</option>
+                                        <option value='Luxury Ball'>豪华球</option>
+                                        <option value='Premier Ball'>纪念球</option>
+                                        <option value='Dusk Ball'>黑暗球</option>
+                                        <option value='Heal Ball'>治愈球</option>
+                                        <option value='Quick Ball'>先机球</option>
+                                        <option value='Cherish Ball'>贵重球</option>
+                                        <option value='Potion'>伤药</option>
+                                        <option value='Antidote'>解毒药</option>
+                                        <option value='Burn Heal'>灼伤药</option>
+                                        <option value='Ice Heal'>解冻药</option>
+                                        <option value='Awakening'>解眠药</option>
+                                        <option value='Paralyze Heal'>解麻药</option>
+                                        <option value='Full Restore'>全复药</option>
+                                        <option value='Max Potion'>全满药</option>
+                                        <option value='Hyper Potion'>厉害伤药</option>
+                                        <option value='Super Potion'>好伤药</option>
+                                        <option value='Full Heal'>万灵药</option>
+                                        <option value='Revive'>活力碎片</option>
+                                        <option value='Max Revive'>活力块</option>
+                                        <option value='Fresh Water'>美味之水</option>
+                                        <option value='Soda Pop'>劲爽汽水</option>
+                                        <option value='Lemonade'>果汁牛奶</option>
+                                        <option value='Moomoo Milk'>哞哞鲜奶</option>
+                                        <option value='Energy Powder'>元气粉</option>
+                                        <option value='Energy Root'>元气根</option>
+                                        <option value='Heal Powder'>万能粉</option>
+                                        <option value='Revival Herb'>复活草</option>
+                                        <option value='Ether'>ＰＰ单项小补剂</option>
+                                        <option value='Max Ether'>ＰＰ单项全补剂</option>
+                                        <option value='Elixir'>ＰＰ多项小补剂</option>
+                                        <option value='Max Elixir'>ＰＰ多项全补剂</option>
+                                        <option value='HP Up'>ＨＰ增强剂</option>
+                                        <option value='Protein'>攻击增强剂</option>
+                                        <option value='Iron'>防御增强剂</option>
+                                        <option value='Carbos'>速度增强剂</option>
+                                        <option value='Calcium'>特攻增强剂</option>
+                                        <option value='Rare Candy'>神奇糖果</option>
+                                        <option value='PP Up'>ＰＰ提升剂</option>
+                                        <option value='Zinc'>特防增强剂</option>
+                                        <option value='PP Max'>ＰＰ极限提升剂</option>
+                                        <option value='Guard Spec.'>能力防守</option>
+                                        <option value='Dire Hit'>要害攻击</option>
+                                        <option value='X Attack'>力量强化</option>
+                                        <option value='X Defense'>防御强化</option>
+                                        <option value='X Speed'>速度强化</option>
+                                        <option value='X Accuracy'>命中强化</option>
+                                        <option value='X Sp. Atk'>特攻强化</option>
+                                        <option value='X Sp. Def'>特防强化</option>
+                                        <option value='Poké Doll'>皮皮玩偶</option>
+                                        <option value='Sun Stone'>日之石</option>
+                                        <option value='Moon Stone'>月之石</option>
+                                        <option value='Fire Stone'>火之石</option>
+                                        <option value='Thunder Stone'>雷之石</option>
+                                        <option value='Water Stone'>水之石</option>
+                                        <option value='Leaf Stone'>叶之石</option>
+                                        <option value='Tiny Mushroom'>小蘑菇</option>
+                                        <option value='Big Mushroom'>大蘑菇</option>
+                                        <option value='Pearl'>珍珠</option>
+                                        <option value='Big Pearl'>大珍珠</option>
+                                        <option value='Stardust'>星星沙子</option>
+                                        <option value='Star Piece'>星星碎片</option>
+                                        <option value='Nugget'>金珠</option>
+                                        <option value='Honey'>甜甜蜜</option>
+                                        <option value='Rare Bone'>贵重骨头</option>
+                                        <option value='Shiny Stone'>光之石</option>
+                                        <option value='Dusk Stone'>暗之石</option>
+                                        <option value='Dawn Stone'>觉醒之石</option>
+                                        <option value='Oval Stone'>浑圆之石</option>
+                                        <option value='Odd Keystone'>楔石</option>
+                                        <option value='Griseous Orb'>白金宝珠</option>
+                                        <option value='Adamant Orb'>金刚宝珠</option>
+                                        <option value='Lustrous Orb'>白玉宝珠</option>
+                                        <option value='Cheri Berry'>樱子果</option>
+                                        <option value='Chesto Berry'>零余果</option>
+                                        <option value='Pecha Berry'>桃桃果</option>
+                                        <option value='Rawst Berry'>莓莓果</option>
+                                        <option value='Aspear Berry'>利木果</option>
+                                        <option value='Leppa Berry'>苹野果</option>
+                                        <option value='Oran Berry'>橙橙果</option>
+                                        <option value='Persim Berry'>柿仔果</option>
+                                        <option value='Lum Berry'>木子果</option>
+                                        <option value='Sitrus Berry'>文柚果</option>
+                                        <option value='Figy Berry'>勿花果</option>
+                                        <option value='Wiki Berry'>异奇果</option>
+                                        <option value='Mago Berry'>芒芒果</option>
+                                        <option value='Aguav Berry'>乐芭果</option>
+                                        <option value='Iapapa Berry'>芭亚果</option>
+                                        <option value='Pomeg Berry'>榴石果</option>
+                                        <option value='Kelpsy Berry'>藻根果</option>
+                                        <option value='Qualot Berry'>比巴果</option>
+                                        <option value='Hondew Berry'>哈密果</option>
+                                        <option value='Grepa Berry'>萄葡果</option>
+                                        <option value='Tamato Berry'>茄番果</option>
+                                        <option value='Occa Berry'>巧可果</option>
+                                        <option value='Passho Berry'>千香果</option>
+                                        <option value='Wacan Berry'>烛木果</option>
+                                        <option value='Rindo Berry'>罗子果</option>
+                                        <option value='Yache Berry'>番荔果</option>
+                                        <option value='Chople Berry'>莲蒲果</option>
+                                        <option value='Kebia Berry'>通通果</option>
+                                        <option value='Shuca Berry'>腰木果</option>
+                                        <option value='Coba Berry'>棱瓜果</option>
+                                        <option value='Payapa Berry'>福禄果</option>
+                                        <option value='Tanga Berry'>扁樱果</option>
+                                        <option value='Charti Berry'>草蚕果</option>
+                                        <option value='Kasib Berry'>佛柑果</option>
+                                        <option value='Haban Berry'>莓榴果</option>
+                                        <option value='Colbur Berry'>刺耳果</option>
+                                        <option value='Babiri Berry'>霹霹果</option>
+                                        <option value='Chilan Berry'>灯浆果</option>
+                                        <option value='Liechi Berry'>枝荔果</option>
+                                        <option value='Ganlon Berry'>龙睛果</option>
+                                        <option value='Salac Berry'>沙鳞果</option>
+                                        <option value='Petaya Berry'>龙火果</option>
+                                        <option value='Apicot Berry'>杏仔果</option>
+                                        <option value='Lansat Berry'>兰萨果</option>
+                                        <option value='Starf Berry'>星桃果</option>
+                                        <option value='Enigma Berry'>谜芝果</option>
+                                        <option value='Micle Berry'>奇秘果</option>
+                                        <option value='Custap Berry'>释陀果</option>
+                                        <option value='Jaboca Berry'>嘉珍果</option>
+                                        <option value='Rowap Berry'>雾莲果</option>
+                                        <option value='Bright Powder'>光粉</option>
+                                        <option value='White Herb'>白色香草</option>
+                                        <option value='Quick Claw'>先制之爪</option>
+                                        <option value='Soothe Bell'>安抚之铃</option>
+                                        <option value='Mental Herb'>心灵香草</option>
+                                        <option value='Choice Band'>讲究头带</option>
+                                        <option value='King’s Rock'>王者之证</option>
+                                        <option value='Silver Powder'>银粉</option>
+                                        <option value='Amulet Coin'>护符金币</option>
+                                        <option value='Cleanse Tag'>洁净之符</option>
+                                        <option value='Smoke Ball'>烟雾球</option>
+                                        <option value='Everstone'>不变之石</option>
+                                        <option value='Focus Band'>气势头带</option>
+                                        <option value='Lucky Egg'>幸运蛋</option>
+                                        <option value='Scope Lens'>焦点镜</option>
+                                        <option value='Metal Coat'>金属膜</option>
+                                        <option value='Leftovers'>吃剩的东西</option>
+                                        <option value='Light Ball'>电气球</option>
+                                        <option value='Soft Sand'>柔软沙子</option>
+                                        <option value='Hard Stone'>硬石头</option>
+                                        <option value='Miracle Seed'>奇迹种子</option>
+                                        <option value='Black Glasses'>黑色眼镜</option>
+                                        <option value='Black Belt'>黑带</option>
+                                        <option value='Magnet'>磁铁</option>
+                                        <option value='Mystic Water'>神秘水滴</option>
+                                        <option value='Sharp Beak'>锐利鸟嘴</option>
+                                        <option value='Poison Barb'>毒针</option>
+                                        <option value='Never-Melt Ice'>不融冰</option>
+                                        <option value='Spell Tag'>咒术之符</option>
+                                        <option value='Twisted Spoon'>弯曲的汤匙</option>
+                                        <option value='Charcoal'>木炭</option>
+                                        <option value='Dragon Fang'>龙之牙</option>
+                                        <option value='Silk Scarf'>丝绸围巾</option>
+                                        <option value='Shell Bell'>贝壳之铃</option>
+                                        <option value='Wide Lens'>广角镜</option>
+                                        <option value='Muscle Band'>力量头带</option>
+                                        <option value='Wise Glasses'>博识眼镜</option>
+                                        <option value='Expert Belt'>达人带</option>
+                                        <option value='Light Clay'>光之黏土</option>
+                                        <option value='Life Orb'>生命宝珠</option>
+                                        <option value='Power Herb'>强力香草</option>
+                                        <option value='Toxic Orb'>剧毒宝珠</option>
+                                        <option value='Flame Orb'>火焰宝珠</option>
+                                        <option value='Focus Sash'>气势披带</option>
+                                        <option value='Zoom Lens'>对焦镜</option>
+                                        <option value='Metronome'>节拍器</option>
+                                        <option value='Iron Ball'>黑色铁球</option>
+                                        <option value='Lagging Tail'>后攻之尾</option>
+                                        <option value='Destiny Knot'>红线</option>
+                                        <option value='Black Sludge'>黑色污泥</option>
+                                        <option value='Icy Rock'>冰冷岩石</option>
+                                        <option value='Smooth Rock'>沙沙岩石</option>
+                                        <option value='Heat Rock'>炽热岩石</option>
+                                        <option value='Damp Rock'>潮湿岩石</option>
+                                        <option value='Grip Claw'>紧缠钩爪</option>
+                                        <option value='Choice Scarf'>讲究围巾</option>
+                                        <option value='Sticky Barb'>附着针</option>
+                                        <option value='Power Bracer'>力量护腕</option>
+                                        <option value='Power Belt'>力量腰带</option>
+                                        <option value='Power Lens'>力量镜</option>
+                                        <option value='Power Band'>力量束带</option>
+                                        <option value='Power Anklet'>力量护踝</option>
+                                        <option value='Power Weight'>力量负重</option>
+                                        <option value='Shed Shell'>美丽空壳</option>
+                                        <option value='Big Root'>大根茎</option>
+                                        <option value='Choice Specs'>讲究眼镜</option>
+                                        <option value='Flame Plate'>火球石板</option>
+                                        <option value='Splash Plate'>水滴石板</option>
+                                        <option value='Zap Plate'>雷电石板</option>
+                                        <option value='Meadow Plate'>碧绿石板</option>
+                                        <option value='Icicle Plate'>冰柱石板</option>
+                                        <option value='Fist Plate'>拳头石板</option>
+                                        <option value='Toxic Plate'>剧毒石板</option>
+                                        <option value='Earth Plate'>大地石板</option>
+                                        <option value='Sky Plate'>蓝天石板</option>
+                                        <option value='Mind Plate'>神奇石板</option>
+                                        <option value='Insect Plate'>玉虫石板</option>
+                                        <option value='Stone Plate'>岩石石板</option>
+                                        <option value='Spooky Plate'>妖怪石板</option>
+                                        <option value='Draco Plate'>龙之石板</option>
+                                        <option value='Dread Plate'>恶颜石板</option>
+                                        <option value='Iron Plate'>钢铁石板</option>
+                                        <option value='Razor Claw'>锐利之爪</option>
+                                        <option value='TM001'>招式学习器００１</option>
+                                        <option value='TM002'>招式学习器００２</option>
+                                        <option value='TM003'>招式学习器００３</option>
+                                        <option value='TM004'>招式学习器００４</option>
+                                        <option value='TM005'>招式学习器００５</option>
+                                        <option value='TM006'>招式学习器００６</option>
+                                        <option value='TM007'>招式学习器００７</option>
+                                        <option value='TM008'>招式学习器００８</option>
+                                        <option value='TM009'>招式学习器００９</option>
+                                        <option value='TM010'>招式学习器０１０</option>
+                                        <option value='TM011'>招式学习器０１１</option>
+                                        <option value='TM012'>招式学习器０１２</option>
+                                        <option value='TM013'>招式学习器０１３</option>
+                                        <option value='TM014'>招式学习器０１４</option>
+                                        <option value='TM015'>招式学习器０１５</option>
+                                        <option value='TM016'>招式学习器０１６</option>
+                                        <option value='TM017'>招式学习器０１７</option>
+                                        <option value='TM018'>招式学习器０１８</option>
+                                        <option value='TM019'>招式学习器０１９</option>
+                                        <option value='TM020'>招式学习器０２０</option>
+                                        <option value='TM021'>招式学习器０２１</option>
+                                        <option value='TM022'>招式学习器０２２</option>
+                                        <option value='TM023'>招式学习器０２３</option>
+                                        <option value='TM024'>招式学习器０２４</option>
+                                        <option value='TM025'>招式学习器０２５</option>
+                                        <option value='TM026'>招式学习器０２６</option>
+                                        <option value='TM027'>招式学习器０２７</option>
+                                        <option value='TM028'>招式学习器０２８</option>
+                                        <option value='TM029'>招式学习器０２９</option>
+                                        <option value='TM030'>招式学习器０３０</option>
+                                        <option value='TM031'>招式学习器０３１</option>
+                                        <option value='TM032'>招式学习器０３２</option>
+                                        <option value='TM033'>招式学习器０３３</option>
+                                        <option value='TM034'>招式学习器０３４</option>
+                                        <option value='TM035'>招式学习器０３５</option>
+                                        <option value='TM036'>招式学习器０３６</option>
+                                        <option value='TM037'>招式学习器０３７</option>
+                                        <option value='TM038'>招式学习器０３８</option>
+                                        <option value='TM039'>招式学习器０３９</option>
+                                        <option value='TM040'>招式学习器０４０</option>
+                                        <option value='TM041'>招式学习器０４１</option>
+                                        <option value='TM042'>招式学习器０４２</option>
+                                        <option value='TM043'>招式学习器０４３</option>
+                                        <option value='TM044'>招式学习器０４４</option>
+                                        <option value='TM045'>招式学习器０４５</option>
+                                        <option value='TM046'>招式学习器０４６</option>
+                                        <option value='TM047'>招式学习器０４７</option>
+                                        <option value='TM048'>招式学习器０４８</option>
+                                        <option value='TM049'>招式学习器０４９</option>
+                                        <option value='TM050'>招式学习器０５０</option>
+                                        <option value='TM051'>招式学习器０５１</option>
+                                        <option value='TM052'>招式学习器０５２</option>
+                                        <option value='TM053'>招式学习器０５３</option>
+                                        <option value='TM054'>招式学习器０５４</option>
+                                        <option value='TM055'>招式学习器０５５</option>
+                                        <option value='TM056'>招式学习器０５６</option>
+                                        <option value='TM057'>招式学习器０５７</option>
+                                        <option value='TM058'>招式学习器０５８</option>
+                                        <option value='TM059'>招式学习器０５９</option>
+                                        <option value='TM060'>招式学习器０６０</option>
+                                        <option value='TM061'>招式学习器０６１</option>
+                                        <option value='TM062'>招式学习器０６２</option>
+                                        <option value='TM063'>招式学习器０６３</option>
+                                        <option value='TM064'>招式学习器０６４</option>
+                                        <option value='TM065'>招式学习器０６５</option>
+                                        <option value='TM066'>招式学习器０６６</option>
+                                        <option value='TM067'>招式学习器０６７</option>
+                                        <option value='TM068'>招式学习器０６８</option>
+                                        <option value='TM069'>招式学习器０６９</option>
+                                        <option value='TM070'>招式学习器０７０</option>
+                                        <option value='TM071'>招式学习器０７１</option>
+                                        <option value='TM072'>招式学习器０７２</option>
+                                        <option value='TM073'>招式学习器０７３</option>
+                                        <option value='TM074'>招式学习器０７４</option>
+                                        <option value='TM075'>招式学习器０７５</option>
+                                        <option value='TM076'>招式学习器０７６</option>
+                                        <option value='TM077'>招式学习器０７７</option>
+                                        <option value='TM078'>招式学习器０７８</option>
+                                        <option value='TM079'>招式学习器０７９</option>
+                                        <option value='TM080'>招式学习器０８０</option>
+                                        <option value='TM081'>招式学习器０８１</option>
+                                        <option value='TM082'>招式学习器０８２</option>
+                                        <option value='TM083'>招式学习器０８３</option>
+                                        <option value='TM084'>招式学习器０８４</option>
+                                        <option value='TM085'>招式学习器０８５</option>
+                                        <option value='TM086'>招式学习器０８６</option>
+                                        <option value='TM087'>招式学习器０８７</option>
+                                        <option value='TM088'>招式学习器０８８</option>
+                                        <option value='TM089'>招式学习器０８９</option>
+                                        <option value='TM090'>招式学习器０９０</option>
+                                        <option value='TM091'>招式学习器０９１</option>
+                                        <option value='TM092'>招式学习器０９２</option>
+                                        <option value='Red Apricorn'>红球果</option>
+                                        <option value='Blue Apricorn'>蓝球果</option>
+                                        <option value='Yellow Apricorn'>黄球果</option>
+                                        <option value='Green Apricorn'>绿球果</option>
+                                        <option value='Pink Apricorn'>粉球果</option>
+                                        <option value='White Apricorn'>白球果</option>
+                                        <option value='Black Apricorn'>黑球果</option>
+                                        <option value='Fast Ball'>速度球</option>
+                                        <option value='Level Ball'>等级球</option>
+                                        <option value='Lure Ball'>诱饵球</option>
+                                        <option value='Heavy Ball'>沉重球</option>
+                                        <option value='Love Ball'>甜蜜球</option>
+                                        <option value='Friend Ball'>友友球</option>
+                                        <option value='Moon Ball'>月亮球</option>
+                                        <option value='Sport Ball'>竞赛球</option>
+                                        <option value='Park Ball'>公园球</option>
+                                        <option value='Eviolite'>进化奇石</option>
+                                        <option value='Float Stone'>轻石</option>
+                                        <option value='Rocky Helmet'>凸凸头盔</option>
+                                        <option value='Air Balloon'>气球</option>
+                                        <option value='Red Card'>红牌</option>
+                                        <option value='Ring Target'>标靶</option>
+                                        <option value='Binding Band'>紧绑束带</option>
+                                        <option value='Absorb Bulb'>球根</option>
+                                        <option value='Cell Battery'>充电电池</option>
+                                        <option value='Eject Button'>逃脱按键</option>
+                                        <option value='Normal Gem'>一般宝石</option>
+                                        <option value='Health Feather'>体力之羽</option>
+                                        <option value='Muscle Feather'>肌力之羽</option>
+                                        <option value='Resist Feather'>抵抗之羽</option>
+                                        <option value='Genius Feather'>智力之羽</option>
+                                        <option value='Clever Feather'>精神之羽</option>
+                                        <option value='Swift Feather'>瞬发之羽</option>
+                                        <option value='Pretty Feather'>美丽之羽</option>
+                                        <option value='Dream Ball'>梦境球</option>
+                                        <option value='Balm Mushroom'>芳香蘑菇</option>
+                                        <option value='Big Nugget'>巨大金珠</option>
+                                        <option value='Pearl String'>丸子珍珠</option>
+                                        <option value='Comet Shard'>彗星碎片</option>
+                                        <option value='TM093'>招式学习器０９３</option>
+                                        <option value='TM094'>招式学习器０９４</option>
+                                        <option value='TM095'>招式学习器０９５</option>
+                                        <option value='Weakness Policy'>弱点保险</option>
+                                        <option value='Assault Vest'>突击背心</option>
+                                        <option value='Pixie Plate'>妖精石板</option>
+                                        <option value='Ability Capsule'>特性胶囊</option>
+                                        <option value='Luminous Moss'>光苔</option>
+                                        <option value='Snowball'>雪球</option>
+                                        <option value='Safety Goggles'>防尘护目镜</option>
+                                        <option value='Roseli Berry'>洛玫果</option>
+                                        <option value='Kee Berry'>亚开果</option>
+                                        <option value='Maranga Berry'>香罗果</option>
+                                        <option value='TM096'>招式学习器０９６</option>
+                                        <option value='TM097'>招式学习器０９７</option>
+                                        <option value='TM098'>招式学习器０９８</option>
+                                        <option value='TM099'>招式学习器０９９</option>
+                                        <option value='Lumiose Galette'>密阿雷格雷派饼</option>
+                                        <option value='Shalour Sable'>娑罗沙布蕾</option>
+                                        <option value='Bottle Cap'>银色王冠</option>
+                                        <option value='Gold Bottle Cap'>金色王冠</option>
+                                        <option value='Adrenaline Orb'>胆怯球</option>
+                                        <option value='Ice Stone'>冰之石</option>
+                                        <option value='Beast Ball'>究极球</option>
+                                        <option value='Red Nectar'>朱红色花蜜</option>
+                                        <option value='Yellow Nectar'>金黄色花蜜</option>
+                                        <option value='Pink Nectar'>桃粉色花蜜</option>
+                                        <option value='Purple Nectar'>兰紫色花蜜</option>
+                                        <option value='Terrain Extender'>大地膜</option>
+                                        <option value='Protective Pads'>部位护具</option>
+                                        <option value='Electric Seed'>电气种子</option>
+                                        <option value='Psychic Seed'>精神种子</option>
+                                        <option value='Misty Seed'>薄雾种子</option>
+                                        <option value='Grassy Seed'>青草种子</option>
+                                        <option value='Rusted Sword'>腐朽的剑</option>
+                                        <option value='Rusted Shield'>腐朽的盾</option>
+                                        <option value='Sweet Apple'>甜甜苹果</option>
+                                        <option value='Tart Apple'>酸酸苹果</option>
+                                        <option value='Throat Spray'>爽喉喷雾</option>
+                                        <option value='Eject Pack'>避难背包</option>
+                                        <option value='Heavy-Duty Boots'>厚底靴</option>
+                                        <option value='Blunder Policy'>打空保险</option>
+                                        <option value='Room Service'>客房服务</option>
+                                        <option value='Utility Umbrella'>万能伞</option>
+                                        <option value='Exp. Candy XS'>经验糖果ＸＳ</option>
+                                        <option value='Exp. Candy S'>经验糖果Ｓ</option>
+                                        <option value='Exp. Candy M'>经验糖果Ｍ</option>
+                                        <option value='Exp. Candy L'>经验糖果Ｌ</option>
+                                        <option value='Exp. Candy XL'>经验糖果ＸＬ</option>
+                                        <option value='TM00'>招式学习器００</option>
+                                        <option value='Lonely Mint'>怕寂寞薄荷</option>
+                                        <option value='Adamant Mint'>固执薄荷</option>
+                                        <option value='Naughty Mint'>顽皮薄荷</option>
+                                        <option value='Brave Mint'>勇敢薄荷</option>
+                                        <option value='Bold Mint'>大胆薄荷</option>
+                                        <option value='Impish Mint'>淘气薄荷</option>
+                                        <option value='Lax Mint'>乐天薄荷</option>
+                                        <option value='Relaxed Mint'>悠闲薄荷</option>
+                                        <option value='Modest Mint'>内敛薄荷</option>
+                                        <option value='Mild Mint'>慢吞吞薄荷</option>
+                                        <option value='Rash Mint'>马虎薄荷</option>
+                                        <option value='Quiet Mint'>冷静薄荷</option>
+                                        <option value='Calm Mint'>温和薄荷</option>
+                                        <option value='Gentle Mint'>温顺薄荷</option>
+                                        <option value='Careful Mint'>慎重薄荷</option>
+                                        <option value='Sassy Mint'>自大薄荷</option>
+                                        <option value='Timid Mint'>胆小薄荷</option>
+                                        <option value='Hasty Mint'>急躁薄荷</option>
+                                        <option value='Jolly Mint'>爽朗薄荷</option>
+                                        <option value='Naive Mint'>天真薄荷</option>
+                                        <option value='Serious Mint'>认真薄荷</option>
+                                        <option value='Cracked Pot'>破裂的茶壶</option>
+                                        <option value='Chipped Pot'>缺损的茶壶</option>
+                                        <option value='Galarica Cuff'>伽勒豆蔻手环</option>
+                                        <option value='Galarica Wreath'>伽勒豆蔻花圈</option>
+                                        <option value='Ability Patch'>特性膏药</option>
+                                        <option value='Adamant Crystal'>大金刚宝玉</option>
+                                        <option value='Lustrous Globe'>大白宝玉</option>
+                                        <option value='Griseous Core'>大白金宝玉</option>
+                                        <option value='Strange Ball'>奇异球</option>
+                                        <option value='Tiny Bamboo Shoot'>小竹笋</option>
+                                        <option value='Big Bamboo Shoot'>大竹笋</option>
+                                        <option value='Malicious Armor'>咒术之铠</option>
+                                        <option value='Normal Tera Shard'>一般太晶碎块</option>
+                                        <option value='Fire Tera Shard'>火太晶碎块</option>
+                                        <option value='Water Tera Shard'>水太晶碎块</option>
+                                        <option value='Electric Tera Shard'>电太晶碎块</option>
+                                        <option value='Grass Tera Shard'>草太晶碎块</option>
+                                        <option value='Ice Tera Shard'>冰太晶碎块</option>
+                                        <option value='Fighting Tera Shard'>格斗太晶碎块</option>
+                                        <option value='Poison Tera Shard'>毒太晶碎块</option>
+                                        <option value='Ground Tera Shard'>地面太晶碎块</option>
+                                        <option value='Flying Tera Shard'>飞行太晶碎块</option>
+                                        <option value='Psychic Tera Shard'>超能力太晶碎块</option>
+                                        <option value='Bug Tera Shard'>虫太晶碎块</option>
+                                        <option value='Rock Tera Shard'>岩石太晶碎块</option>
+                                        <option value='Ghost Tera Shard'>幽灵太晶碎块</option>
+                                        <option value='Dragon Tera Shard'>龙太晶碎块</option>
+                                        <option value='Dark Tera Shard'>恶太晶碎块</option>
+                                        <option value='Steel Tera Shard'>钢太晶碎块</option>
+                                        <option value='Fairy Tera Shard'>妖精太晶碎块</option>
+                                        <option value='Booster Energy'>驱劲能量</option>
+                                        <option value='Ability Shield'>特性护具</option>
+                                        <option value='Clear Amulet'>清净坠饰</option>
+                                        <option value='Mirror Herb'>模仿香草</option>
+                                        <option value='Punching Glove'>拳击手套</option>
+                                        <option value='Covert Cloak'>密探斗篷</option>
+                                        <option value='Loaded Dice'>机变骰子</option>
+                                        <option value='TM100'>招式学习器１００</option>
+                                        <option value='TM101'>招式学习器１０１</option>
+                                        <option value='TM102'>招式学习器１０２</option>
+                                        <option value='TM103'>招式学习器１０３</option>
+                                        <option value='TM104'>招式学习器１０４</option>
+                                        <option value='TM105'>招式学习器１０５</option>
+                                        <option value='TM106'>招式学习器１０６</option>
+                                        <option value='TM107'>招式学习器１０７</option>
+                                        <option value='TM108'>招式学习器１０８</option>
+                                        <option value='TM109'>招式学习器１０９</option>
+                                        <option value='TM110'>招式学习器１１０</option>
+                                        <option value='TM111'>招式学习器１１１</option>
+                                        <option value='TM112'>招式学习器１１２</option>
+                                        <option value='TM113'>招式学习器１１３</option>
+                                        <option value='TM114'>招式学习器１１４</option>
+                                        <option value='TM115'>招式学习器１１５</option>
+                                        <option value='TM116'>招式学习器１１６</option>
+                                        <option value='TM117'>招式学习器１１７</option>
+                                        <option value='TM118'>招式学习器１１８</option>
+                                        <option value='TM119'>招式学习器１１９</option>
+                                        <option value='TM120'>招式学习器１２０</option>
+                                        <option value='TM121'>招式学习器１２１</option>
+                                        <option value='TM122'>招式学习器１２２</option>
+                                        <option value='TM123'>招式学习器１２３</option>
+                                        <option value='TM124'>招式学习器１２４</option>
+                                        <option value='TM125'>招式学习器１２５</option>
+                                        <option value='TM126'>招式学习器１２６</option>
+                                        <option value='TM127'>招式学习器１２７</option>
+                                        <option value='TM128'>招式学习器１２８</option>
+                                        <option value='TM129'>招式学习器１２９</option>
+                                        <option value='TM130'>招式学习器１３０</option>
+                                        <option value='TM131'>招式学习器１３１</option>
+                                        <option value='TM132'>招式学习器１３２</option>
+                                        <option value='TM133'>招式学习器１３３</option>
+                                        <option value='TM134'>招式学习器１３４</option>
+                                        <option value='TM135'>招式学习器１３５</option>
+                                        <option value='TM136'>招式学习器１３６</option>
+                                        <option value='TM137'>招式学习器１３７</option>
+                                        <option value='TM138'>招式学习器１３８</option>
+                                        <option value='TM139'>招式学习器１３９</option>
+                                        <option value='TM140'>招式学习器１４０</option>
+                                        <option value='TM141'>招式学习器１４１</option>
+                                        <option value='TM142'>招式学习器１４２</option>
+                                        <option value='TM143'>招式学习器１４３</option>
+                                        <option value='TM144'>招式学习器１４４</option>
+                                        <option value='TM145'>招式学习器１４５</option>
+                                        <option value='TM146'>招式学习器１４６</option>
+                                        <option value='TM147'>招式学习器１４７</option>
+                                        <option value='TM148'>招式学习器１４８</option>
+                                        <option value='TM149'>招式学习器１４９</option>
+                                        <option value='TM150'>招式学习器１５０</option>
+                                        <option value='TM151'>招式学习器１５１</option>
+                                        <option value='TM152'>招式学习器１５２</option>
+                                        <option value='TM153'>招式学习器１５３</option>
+                                        <option value='TM154'>招式学习器１５４</option>
+                                        <option value='TM155'>招式学习器１５５</option>
+                                        <option value='TM156'>招式学习器１５６</option>
+                                        <option value='TM157'>招式学习器１５７</option>
+                                        <option value='TM158'>招式学习器１５８</option>
+                                        <option value='TM159'>招式学习器１５９</option>
+                                        <option value='TM160'>招式学习器１６０</option>
+                                        <option value='TM161'>招式学习器１６１</option>
+                                        <option value='TM162'>招式学习器１６２</option>
+                                        <option value='TM163'>招式学习器１６３</option>
+                                        <option value='TM164'>招式学习器１６４</option>
+                                        <option value='TM165'>招式学习器１６５</option>
+                                        <option value='TM166'>招式学习器１６６</option>
+                                        <option value='TM167'>招式学习器１６７</option>
+                                        <option value='TM168'>招式学习器１６８</option>
+                                        <option value='TM169'>招式学习器１６９</option>
+                                        <option value='TM170'>招式学习器１７０</option>
+                                        <option value='TM171'>招式学习器１７１</option>
+                                        <option value='Auspicious Armor'>庆祝之铠</option>
+                                        <option value='Leader’s Crest'>头领凭证</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>等级</td>
+                                <td>
+                                    <div class="form-group">
+                                        <input type="number" class="form-control" id="level" placeholder="1-100"
+                                            onchange="checkNum(this, 1, 100, 100)" style="width: 6em;">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>异色</td>
+                                <td>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" id="isShiny">
+                                        </label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>球种</td>
+                                <td>
+                                    <select id="ball" class="selectpicker" data-live-search="true" data-width="auto">
+                                        <option value='None'>无</optional>
+                                        <option value='Master Ball'>大师球</optional>
+                                        <option value='Ultra Ball'>高级球</optional>
+                                        <option value='Great Ball'>超级球</optional>
+                                        <option value='Poké Ball'>精灵球</optional>
+                                        <option value='Safari Ball'>狩猎球</optional>
+                                        <option value='Net Ball'>捕网球</optional>
+                                        <option value='Dive Ball'>潜水球</optional>
+                                        <option value='Nest Ball'>巢穴球</optional>
+                                        <option value='Repeat Ball'>重复球</optional>
+                                        <option value='Timer Ball'>计时球</optional>
+                                        <option value='Luxury Ball'>豪华球</optional>
+                                        <option value='Premier Ball'>纪念球</optional>
+                                        <option value='Dusk Ball'>黑暗球</optional>
+                                        <option value='Heal Ball'>治愈球</optional>
+                                        <option value='Quick Ball'>先机球</optional>
+                                        <option value='Cherish Ball'>贵重球</optional>
+                                        <option value='Fast Ball'>速度球</optional>
+                                        <option value='Level Ball'>等级球</optional>
+                                        <option value='Lure Ball'>诱饵球</optional>
+                                        <option value='Heavy Ball'>沉重球</optional>
+                                        <option value='Love Ball'>甜蜜球</optional>
+                                        <option value='Friend Ball'>友友球</optional>
+                                        <option value='Moon Ball'>月亮球</optional>
+                                        <option value='Sport Ball'>竞赛球</optional>
+                                        <option value='Dream Ball'>梦境球</optional>
+                                        <option value='Beast Ball'>究极球</optional>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>特性</td>
+                                <td>
+                                    <select id="ability" class="selectpicker" data-width="auto">
+                                        <option>大力士</option>
+                                        <option>好家伙</option>
+                                        <option>梦特</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>性格</td>
+                                <td>
+                                    <select id="nature" class="selectpicker" data-live-search="true" data-width="auto">
+                                        <option value='Hardy'>勤奋</option>
+                                        <option value='Lonely'>怕寂寞</option>
+                                        <option value='Brave'>勇敢</option>
+                                        <option value='Adamant'>固执</option>
+                                        <option value='Naughty'>顽皮</option>
+                                        <option value='Bold'>大胆</option>
+                                        <option value='Docile'>坦率</option>
+                                        <option value='Relaxed'>悠闲</option>
+                                        <option value='Impish'>淘气</option>
+                                        <option value='Lax'>乐天</option>
+                                        <option value='Timid'>胆小</option>
+                                        <option value='Hasty'>急躁</option>
+                                        <option value='Serious'>认真</option>
+                                        <option value='Jolly'>爽朗</option>
+                                        <option value='Naive'>天真</option>
+                                        <option value='Modest'>内敛</option>
+                                        <option value='Mild'>慢吞吞</option>
+                                        <option value='Quiet'>冷静</option>
+                                        <option value='Bashful'>害羞</option>
+                                        <option value='Rash'>马虎</option>
+                                        <option value='Calm'>温和</option>
+                                        <option value='Gentle'>温顺</option>
+                                        <option value='Sassy'>自大</option>
+                                        <option value='Careful'>慎重</option>
+                                        <option value='Quirky'>浮躁</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>太晶属性</td>
+                                <td>
+                                    <select id="teraType" class="selectpicker" data-width="auto">
+                                        <option value='Normal'>一般</option>
+                                        <option value='Fighting'>格斗</option>
+                                        <option value='Flying'>飞行</option>
+                                        <option value='Poison'>毒</option>
+                                        <option value='Ground'>地面</option>
+                                        <option value='Rock'>岩石</option>
+                                        <option value='Bug'>虫</option>
+                                        <option value='Ghost'>幽灵</option>
+                                        <option value='Steel'>钢</option>
+                                        <option value='Fire'>火</option>
+                                        <option value='Water'>水</option>
+                                        <option value='Grass'>草</option>
+                                        <option value='Electric'>电</option>
+                                        <option value='Psychic'>超能力</option>
+                                        <option value='Ice'>冰</option>
+                                        <option value='Dragon'>龙</option>
+                                        <option value='Dark'>恶</option>
+                                        <option value='Fairy'>妖精</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>语言</td>
+                                <td>
+                                    <select id="language" class="selectpicker" data-width="auto">
+                                        <option value="Japanese">日语</option>
+                                        <option value="English">英语</option>
+                                        <option value="French">法语</option>
+                                        <option value="Italian">意大利语</option>
+                                        <option value="German">德语</option>
+                                        <option value="Spanish">西班牙语</option>
+                                        <option value="Korean">韩语</option>
+                                        <option value="ChineseS" selected>简体中文</option>
+                                        <option value="ChineseT">繁体中文</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>体型</td>
+                                <td>
+                                    <div class="form-group">
+                                        <input id="scale" type="number" class="form-control" id="level"
+                                            placeholder="0-255" onchange="checkNum(this, 0, 255, 128)"
+                                            style="width: 6em;">
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="ivev">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td style="width: 44px;"></td>
+                                <td>个体值 0~31</td>
+                                <td>努力值 0~252</td>
+                            </tr>
+                            <tr>
+                                <td style="width: 44px;">HP</td>
+                                <td class="iv">
+                                    <div class="form-group form-inline">
+                                        <input type="number" class="form-control" placeholder=""
+                                            style="width: 4em; display: inline;" value="31">
+                                        <input class="btn btn-info" type="button" value="0" onclick="toNumber(this)">
+                                    </div>
+                                </td>
+                                <td class="ev">
+                                    <div class="form-group form-inline">
+                                        <input type="number" class="form-control" placeholder=""
+                                            style="width: 5em; display: inline;">
+                                        <input class="btn btn-info" type="button" value="Max"
+                                            onclick="toNumberEV(this, 252)">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 44px;">攻击</td>
+                                <td class="iv">
+                                    <div class="form-group form-inline">
+                                        <input type="number" class="form-control" placeholder=""
+                                            style="width: 4em; display: inline;" value="31">
+                                        <input class="btn btn-info" type="button" value="0" onclick="toNumber(this)">
+                                    </div>
+
+                                </td>
+                                <td class="ev">
+                                    <div class="form-group form-inline">
+                                        <input type="number" class="form-control" placeholder=""
+                                            style="width: 5em; display: inline;">
+                                        <input class="btn btn-info" type="button" value="Max"
+                                            onclick="toNumberEV(this, 252)">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 44px;">防御</td>
+                                <td class="iv">
+                                    <div class="form-group form-inline">
+                                        <input type="number" class="form-control" placeholder=""
+                                            style="width: 4em; display: inline;" value="31">
+                                        <input class="btn btn-info" type="button" value="0" onclick="toNumber(this)">
+                                    </div>
+
+                                </td>
+                                <td class="ev">
+                                    <div class="form-group form-inline">
+                                        <input type="number" class="form-control" placeholder=""
+                                            style="width: 5em; display: inline;">
+                                        <input class="btn btn-info" type="button" value="Max"
+                                            onclick="toNumberEV(this, 252)">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 44px;">特攻</td>
+                                <td class="iv">
+                                    <div class="form-group form-inline">
+                                        <input type="number" class="form-control" placeholder=""
+                                            style="width: 4em; display: inline;" value="31">
+                                        <input class="btn btn-info" type="button" value="0" onclick="toNumber(this)">
+                                    </div>
+
+                                </td>
+                                <td class="ev">
+                                    <div class="form-group form-inline">
+                                        <input type="number" class="form-control" placeholder=""
+                                            style="width: 5em; display: inline;">
+                                        <input class="btn btn-info" type="button" value="Max"
+                                            onclick="toNumberEV(this, 252)">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 44px;">特防</td>
+                                <td class="iv">
+                                    <div class="form-group form-inline">
+                                        <input type="number" class="form-control" placeholder=""
+                                            style="width: 4em; display: inline;" value="31">
+                                        <input class="btn btn-info" type="button" value="0" onclick="toNumber(this)">
+                                    </div>
+
+                                </td>
+                                <td class="ev">
+                                    <div class="form-group form-inline">
+                                        <input type="number" class="form-control" placeholder=""
+                                            style="width: 5em; display: inline;">
+                                        <input class="btn btn-info" type="button" value="Max"
+                                            onclick="toNumberEV(this, 252)">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 44px;">速度</td>
+                                <td class="iv">
+                                    <div class="form-group form-inline">
+                                        <input type="number" class="form-control" placeholder=""
+                                            style="width: 4em; display: inline;" value="31">
+                                        <input class="btn btn-info" type="button" value="0" onclick="toNumber(this)">
+                                    </div>
+
+                                </td>
+                                <td class="ev">
+                                    <div class="form-group form-inline">
+                                        <input type="number" class="form-control" placeholder=""
+                                            style="width: 5em; display: inline;">
+                                        <input class="btn btn-info" type="button" value="Max"
+                                            onclick="toNumberEV(this, 252)">
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="moves">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td>招式1</td>
+                                <td>
+                                    <select id="move1" class="selectpicker" data-live-search="true" data-width="auto">
+                                        <option>击掌奇袭</option>
+                                        <option>喷射火焰</option>
+                                        <option>龙爪</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>招式2</td>
+                                <td>
+                                    <select id="move2" class="selectpicker" data-live-search="true" data-width="auto">
+                                        <option>击掌奇袭</option>
+                                        <option>喷射火焰</option>
+                                        <option>龙爪</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>招式3</td>
+                                <td>
+                                    <select id="move3" class="selectpicker" data-live-search="true" data-width="auto">
+                                        <option>击掌奇袭</option>
+                                        <option>喷射火焰</option>
+                                        <option>龙爪</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>招式4</td>
+                                <td>
+                                    <select id="move4" class="selectpicker" data-live-search="true" data-width="auto">
+                                        <option>击掌奇袭</option>
+                                        <option>喷射火焰</option>
+                                        <option>龙爪</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+        integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ"
+        crossorigin="anonymous"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js"
+        integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.18/js/bootstrap-select.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.10/dist/clipboard.min.js"></script>
+    <script src="dic.js"></script>
+    <script>
+        $(document).ready(function () {
+            refresh();
+            $("#species").change(function () {
+                refresh();
+            });
+        });
+
+        function refresh() {
+            var species = $("#species").val();
+            var gender = dic_dict[species][0];
+            $("#gender").empty();
+            if (gender == 0) {
+                $("#gender").append('<option value="male">公</option>');
+            } else if (gender == 254) {
+                $("#gender").append('<option>母</option>');
+            } else if (gender == 255) {
+                $("#gender").append('<option value="female">无性别</option>');
+            } else {
+                $("#gender").append('<option value="male">公</option>');
+                $("#gender").append('<option value="female">母</option>');
+            }
+            $("#gender").selectpicker('refresh');
+            var abilities = dic_dict[species][1];
+            $("#ability").empty();
+            $("#ability").append('<option value="' + dic_ablilities[[abilities[0]]][1] + '">' + dic_ablilities[abilities[0]][0] + '</option>');
+            $("#ability").append('<option value="' + dic_ablilities[[abilities[1]]][1] + '">' + dic_ablilities[abilities[1]][0] + '</option>');
+            $("#ability").append('<option value="' + dic_ablilities[[abilities[2]]][1] + '">' + dic_ablilities[abilities[2]][0] + '</option>');
+            $("#ability").selectpicker('refresh');
+            refreshMoves(species);
+        }
+
+        function refreshMoves(species) {
+            refreshMove($("#move1"), species);
+            refreshMove($("#move2"), species);
+            refreshMove($("#move3"), species);
+            refreshMove($("#move4"), species);
+        }
+        function refreshMove($move, species) {
+            $move.empty();
+            var moveIndexs = dic_dict[species][2];
+            $move.append('<option value="None">无</option>');
+            for (var i = 0; i < moveIndexs.length; i++) {
+                $move.append('<option value="' + dic_moves[moveIndexs[i]][1] + '">' + dic_moves[moveIndexs[i]][0] + '</option>');
+            }
+            $move.selectpicker('refresh');
+        }
+        function checkNum(o, start, end, defaultValue) {
+            var $o = $(o);
+            var value = $o.val();
+            if (value < start || end < value) {
+                $o.val(defaultValue);
+            }
+        }
+        function toNumber(o) {
+            var $o = $(o);
+            var $prev = $o.prev();
+            if ($prev.val() == 0) {
+                $o.val("0");
+                $prev.val(31);
+            } else {
+                $o.val("31");
+                $prev.val(0);
+            }
+        }
+        function toNumberEV(o, value) {
+            var count = 0;
+            $(".ev input[type='number']").each(function () {
+                count += this.value == "" ? 0 : parseInt(this.value);
+            });
+            if (count > 510) return;
+            if (count + value > 510) {
+                value = 510 - count;
+            }
+            var $o = $(o);
+            $o.prev().val(value);
+        }
+        function exportPS() {
+            var text = "";
+            var species = $("#species").val();
+            text += species;
+            var gender = $("#gender").val();
+            if (gender == "female" && (species == "Meowstic" || species == "Indeedee" || species == "Basculegion " || species == "Oinkologne")) {
+                species += "-F";
+            }
+            if (gender == "male") text += " (M)";
+            else if (gender == "female") text += " (F)";
+            var heldItem = $("#heldItem").val();
+            if (heldItem != "None") {
+                text += " @ " + heldItem + "\n";
+            } else {
+                text += "\n";
+            }
+
+            var level = $("#level").val();
+            if (level != null && level > 0 && level <= 100) {
+                text += "Level: " + level + "\n";
+            }
+            if ($("#isShiny").prop('checked')) {
+                text += "Shiny: Yes\n";
+            }
+            var ball = $("#ball").val();
+            if (ball != "None") {
+                text += "Ball: " + ball + "\n";
+            }
+            var ability = $("#ability").val();
+            text += "Ability: " + ability + "\n";
+            var nature = $("#nature").val();
+            text += nature + " Nature\n";
+
+            var evs = $(".ev input[type='number']");
+            text += "EVs: " + (evs[0].value == "" ? 0 : evs[0].value) + " HP / "
+                + (evs[1].value == "" ? 0 : evs[1].value) + " Atk / "
+                + (evs[2].value == "" ? 0 : evs[2].value) + " Def / "
+                + (evs[3].value == "" ? 0 : evs[3].value) + " SpA / "
+                + (evs[4].value == "" ? 0 : evs[4].value) + " SpD / "
+                + (evs[5].value == "" ? 0 : evs[5].value) + " Spe \n";
+
+            var ivs = $(".iv input[type='number']");
+            text += "IVs: " + (ivs[0].value == "" ? 0 : ivs[0].value) + " HP / "
+                + (ivs[1].value == "" ? 0 : ivs[1].value) + " Atk / "
+                + (ivs[2].value == "" ? 0 : ivs[2].value) + " Def / "
+                + (ivs[3].value == "" ? 0 : ivs[3].value) + " SpA / "
+                + (ivs[4].value == "" ? 0 : ivs[4].value) + " SpD / "
+                + (ivs[5].value == "" ? 0 : ivs[5].value) + " Spe \n";
+
+            var teraType = $("#teraType").val();
+            text += "Tera Type: " + teraType + "\n";
+            var language = $("#language").val();
+            text += "Language: " + language + "\n";
+            var scale = $("#scale").val();
+            if (scale != "" && scale >= 0 && scale <= 255) {
+                text += ".Scale=" + scale + "\n";
+            }
+
+            var move1 = $("#move1").val();
+            var move2 = $("#move2").val();
+            var move3 = $("#move3").val();
+            var move4 = $("#move4").val();
+            if (move1 != "None") {
+                text += "-" + move1 + "\n";
+            }
+            if (move2 != "None") {
+                text += "-" + move2 + "\n";
+            }
+            if (move3 != "None") {
+                text += "-" + move3 + "\n";
+            }
+            if (move4 != "None") {
+                text += "-" + move4 + "\n";
+            }
+            new ClipboardJS("#exportPS");
+            $("#exportPS").attr("data-clipboard-text", text);
+            console.log(text);
+        }
+
+    </script>
+</body>
+
+</html>
