@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>宝可梦小助手</title>
+    <title>宝可梦朱紫小助手</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css"
@@ -28,7 +28,7 @@
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <a class="navbar-brand" href="#">宝可梦小助手</a>
-                <button id="exportPS" type="button" class="btn btn-default navbar-btn" onclick="exportPS()"
+                <button id="exportPS" type="button" class="btn btn-default navbar-btn" onclick="exportPS()" data-toggle="popover" data-placement="left" data-content="已复制" 
                     style="position: absolute; right: 0;margin-right: 8px;">导出</button>
             </div>
 
@@ -53,489 +53,6 @@
                                 <td>名称</td>
                                 <td>
                                     <select id="species" class="selectpicker" data-live-search="true" data-width="auto">
-                                        <option value='Charmander'>小火龙</option>
-                                        <option value='Charmeleon'>火恐龙</option>
-                                        <option value='Charizard'>喷火龙</option>
-                                        <option value='Pikachu'>皮卡丘</option>
-                                        <option value='Raichu'>雷丘</option>
-                                        <option value='Jigglypuff'>胖丁</option>
-                                        <option value='Wigglytuff'>胖可丁</option>
-                                        <option value='Venonat'>毛球</option>
-                                        <option value='Venomoth'>摩鲁蛾</option>
-                                        <option value='Diglett'>地鼠</option>
-                                        <option value='Dugtrio'>三地鼠</option>
-                                        <option value='Meowth'>喵喵</option>
-                                        <option value='Persian'>猫老大</option>
-                                        <option value='Psyduck'>可达鸭</option>
-                                        <option value='Golduck'>哥达鸭</option>
-                                        <option value='Mankey'>猴怪</option>
-                                        <option value='Primeape'>火暴猴</option>
-                                        <option value='Growlithe'>卡蒂狗</option>
-                                        <option value='Arcanine'>风速狗</option>
-                                        <option value='Slowpoke'>呆呆兽</option>
-                                        <option value='Slowbro'>呆壳兽</option>
-                                        <option value='Magnemite'>小磁怪</option>
-                                        <option value='Magneton'>三合一磁怪</option>
-                                        <option value='Grimer'>臭泥</option>
-                                        <option value='Muk'>臭臭泥</option>
-                                        <option value='Shellder'>大舌贝</option>
-                                        <option value='Cloyster'>刺甲贝</option>
-                                        <option value='Gastly'>鬼斯</option>
-                                        <option value='Haunter'>鬼斯通</option>
-                                        <option value='Gengar'>耿鬼</option>
-                                        <option value='Drowzee'>催眠貘</option>
-                                        <option value='Hypno'>引梦貘人</option>
-                                        <option value='Voltorb'>霹雳电球</option>
-                                        <option value='Electrode'>顽皮雷弹</option>
-                                        <option value='Chansey'>吉利蛋</option>
-                                        <option value='Scyther'>飞天螳螂</option>
-                                        <option value='Tauros'>肯泰罗</option>
-                                        <option value='Magikarp'>鲤鱼王</option>
-                                        <option value='Gyarados'>暴鲤龙</option>
-                                        <option value='Ditto'>百变怪</option>
-                                        <option value='Eevee'>伊布</option>
-                                        <option value='Vaporeon'>水伊布</option>
-                                        <option value='Jolteon'>雷伊布</option>
-                                        <option value='Flareon'>火伊布</option>
-                                        <option value='Articuno'>急冻鸟</option>
-                                        <option value='Zapdos'>闪电鸟</option>
-                                        <option value='Moltres'>火焰鸟</option>
-                                        <option value='Dratini'>迷你龙</option>
-                                        <option value='Dragonair'>哈克龙</option>
-                                        <option value='Dragonite'>快龙</option>
-                                        <option value='Mewtwo'>超梦</option>
-                                        <option value='Mew'>梦幻</option>
-                                        <option value='Cyndaquil'>火球鼠</option>
-                                        <option value='Quilava'>火岩鼠</option>
-                                        <option value='Typhlosion'>火暴兽</option>
-                                        <option value='Pichu'>皮丘</option>
-                                        <option value='Igglybuff'>宝宝丁</option>
-                                        <option value='Mareep'>咩利羊</option>
-                                        <option value='Flaaffy'>茸茸羊</option>
-                                        <option value='Ampharos'>电龙</option>
-                                        <option value='Marill'>玛力露</option>
-                                        <option value='Azumarill'>玛力露丽</option>
-                                        <option value='Sudowoodo'>树才怪</option>
-                                        <option value='Hoppip'>毽子草</option>
-                                        <option value='Skiploom'>毽子花</option>
-                                        <option value='Jumpluff'>毽子棉</option>
-                                        <option value='Sunkern'>向日种子</option>
-                                        <option value='Sunflora'>向日花怪</option>
-                                        <option value='Wooper'>乌波</option>
-                                        <option value='Quagsire'>沼王</option>
-                                        <option value='Espeon'>太阳伊布</option>
-                                        <option value='Umbreon'>月亮伊布</option>
-                                        <option value='Murkrow'>黑暗鸦</option>
-                                        <option value='Slowking'>呆呆王</option>
-                                        <option value='Misdreavus'>梦妖</option>
-                                        <option value='Girafarig'>麒麟奇</option>
-                                        <option value='Pineco'>榛果球</option>
-                                        <option value='Forretress'>佛烈托斯</option>
-                                        <option value='Dunsparce'>土龙弟弟</option>
-                                        <option value='Qwilfish'>千针鱼</option>
-                                        <option value='Scizor'>巨钳螳螂</option>
-                                        <option value='Heracross'>赫拉克罗斯</option>
-                                        <option value='Sneasel'>狃拉</option>
-                                        <option value='Teddiursa'>熊宝宝</option>
-                                        <option value='Ursaring'>圈圈熊</option>
-                                        <option value='Delibird'>信使鸟</option>
-                                        <option value='Houndour'>戴鲁比</option>
-                                        <option value='Houndoom'>黑鲁加</option>
-                                        <option value='Phanpy'>小小象</option>
-                                        <option value='Donphan'>顿甲</option>
-                                        <option value='Stantler'>惊角鹿</option>
-                                        <option value='Blissey'>幸福蛋</option>
-                                        <option value='Larvitar'>幼基拉斯</option>
-                                        <option value='Pupitar'>沙基拉斯</option>
-                                        <option value='Tyranitar'>班基拉斯</option>
-                                        <option value='Wingull'>长翅鸥</option>
-                                        <option value='Pelipper'>大嘴鸥</option>
-                                        <option value='Ralts'>拉鲁拉丝</option>
-                                        <option value='Kirlia'>奇鲁莉安</option>
-                                        <option value='Gardevoir'>沙奈朵</option>
-                                        <option value='Surskit'>溜溜糖球</option>
-                                        <option value='Masquerain'>雨翅蛾</option>
-                                        <option value='Shroomish'>蘑蘑菇</option>
-                                        <option value='Breloom'>斗笠菇</option>
-                                        <option value='Slakoth'>懒人獭</option>
-                                        <option value='Vigoroth'>过动猿</option>
-                                        <option value='Slaking'>请假王</option>
-                                        <option value='Makuhita'>幕下力士</option>
-                                        <option value='Hariyama'>铁掌力士</option>
-                                        <option value='Azurill'>露力丽</option>
-                                        <option value='Sableye'>勾魂眼</option>
-                                        <option value='Meditite'>玛沙那</option>
-                                        <option value='Medicham'>恰雷姆</option>
-                                        <option value='Gulpin'>溶食兽</option>
-                                        <option value='Swalot'>吞食兽</option>
-                                        <option value='Numel'>呆火驼</option>
-                                        <option value='Camerupt'>喷火驼</option>
-                                        <option value='Torkoal'>煤炭龟</option>
-                                        <option value='Spoink'>跳跳猪</option>
-                                        <option value='Grumpig'>噗噗猪</option>
-                                        <option value='Cacnea'>刺球仙人掌</option>
-                                        <option value='Cacturne'>梦歌仙人掌</option>
-                                        <option value='Swablu'>青绵鸟</option>
-                                        <option value='Altaria'>七夕青鸟</option>
-                                        <option value='Zangoose'>猫鼬斩</option>
-                                        <option value='Seviper'>饭匙蛇</option>
-                                        <option value='Barboach'>泥泥鳅</option>
-                                        <option value='Whiscash'>鲶鱼王</option>
-                                        <option value='Shuppet'>怨影娃娃</option>
-                                        <option value='Banette'>诅咒娃娃</option>
-                                        <option value='Tropius'>热带龙</option>
-                                        <option value='Snorunt'>雪童子</option>
-                                        <option value='Glalie'>冰鬼护</option>
-                                        <option value='Luvdisc'>爱心鱼</option>
-                                        <option value='Bagon'>宝贝龙</option>
-                                        <option value='Shelgon'>甲壳龙</option>
-                                        <option value='Salamence'>暴飞龙</option>
-                                        <option value='Kyogre'>盖欧卡</option>
-                                        <option value='Groudon'>固拉多</option>
-                                        <option value='Rayquaza'>烈空坐</option>
-                                        <option value='Starly'>姆克儿</option>
-                                        <option value='Staravia'>姆克鸟</option>
-                                        <option value='Staraptor'>姆克鹰</option>
-                                        <option value='Kricketot'>圆法师</option>
-                                        <option value='Kricketune'>音箱蟀</option>
-                                        <option value='Shinx'>小猫怪</option>
-                                        <option value='Luxio'>勒克猫</option>
-                                        <option value='Luxray'>伦琴猫</option>
-                                        <option value='Combee'>三蜜蜂</option>
-                                        <option value='Vespiquen'>蜂女王</option>
-                                        <option value='Pachirisu'>帕奇利兹</option>
-                                        <option value='Buizel'>泳圈鼬</option>
-                                        <option value='Floatzel'>浮潜鼬</option>
-                                        <option value='Shellos'>无壳海兔</option>
-                                        <option value='Gastrodon'>海兔兽</option>
-                                        <option value='Drifloon'>飘飘球</option>
-                                        <option value='Drifblim'>随风球</option>
-                                        <option value='Mismagius'>梦妖魔</option>
-                                        <option value='Honchkrow'>乌鸦头头</option>
-                                        <option value='Stunky'>臭鼬噗</option>
-                                        <option value='Skuntank'>坦克臭鼬</option>
-                                        <option value='Bronzor'>铜镜怪</option>
-                                        <option value='Bronzong'>青铜钟</option>
-                                        <option value='Bonsly'>盆才怪</option>
-                                        <option value='Happiny'>小福蛋</option>
-                                        <option value='Spiritomb'>花岩怪</option>
-                                        <option value='Gible'>圆陆鲨</option>
-                                        <option value='Gabite'>尖牙陆鲨</option>
-                                        <option value='Garchomp'>烈咬陆鲨</option>
-                                        <option value='Riolu'>利欧路</option>
-                                        <option value='Lucario'>路卡利欧</option>
-                                        <option value='Hippopotas'>沙河马</option>
-                                        <option value='Hippowdon'>河马兽</option>
-                                        <option value='Croagunk'>不良蛙</option>
-                                        <option value='Toxicroak'>毒骷蛙</option>
-                                        <option value='Finneon'>荧光鱼</option>
-                                        <option value='Lumineon'>霓虹鱼</option>
-                                        <option value='Snover'>雪笠怪</option>
-                                        <option value='Abomasnow'>暴雪王</option>
-                                        <option value='Weavile'>玛狃拉</option>
-                                        <option value='Magnezone'>自爆磁怪</option>
-                                        <option value='Leafeon'>叶伊布</option>
-                                        <option value='Glaceon'>冰伊布</option>
-                                        <option value='Gallade'>艾路雷朵</option>
-                                        <option value='Froslass'>雪妖女</option>
-                                        <option value='Rotom'>洛托姆</option>
-                                        <option value='Uxie'>由克希</option>
-                                        <option value='Mesprit'>艾姆利多</option>
-                                        <option value='Azelf'>亚克诺姆</option>
-                                        <option value='Dialga'>帝牙卢卡</option>
-                                        <option value='Palkia'>帕路奇亚</option>
-                                        <option value='Heatran'>席多蓝恩</option>
-                                        <option value='Giratina'>骑拉帝纳</option>
-                                        <option value='Cresselia'>克雷色利亚</option>
-                                        <option value='Arceus'>阿尔宙斯</option>
-                                        <option value='Oshawott'>水水獭</option>
-                                        <option value='Dewott'>双刃丸</option>
-                                        <option value='Samurott'>大剑鬼</option>
-                                        <option value='Petilil'>百合根娃娃</option>
-                                        <option value='Lilligant'>裙儿小姐</option>
-                                        <option value='Basculin'>野蛮鲈鱼</option>
-                                        <option value='Sandile'>黑眼鳄</option>
-                                        <option value='Krokorok'>混混鳄</option>
-                                        <option value='Krookodile'>流氓鳄</option>
-                                        <option value='Zorua'>索罗亚</option>
-                                        <option value='Zoroark'>索罗亚克</option>
-                                        <option value='Gothita'>哥德宝宝</option>
-                                        <option value='Gothorita'>哥德小童</option>
-                                        <option value='Gothitelle'>哥德小姐</option>
-                                        <option value='Deerling'>四季鹿</option>
-                                        <option value='Sawsbuck'>萌芽鹿</option>
-                                        <option value='Foongus'>哎呀球菇</option>
-                                        <option value='Amoonguss'>败露球菇</option>
-                                        <option value='Alomomola'>保姆曼波</option>
-                                        <option value='Tynamo'>麻麻小鱼</option>
-                                        <option value='Eelektrik'>麻麻鳗</option>
-                                        <option value='Eelektross'>麻麻鳗鱼王</option>
-                                        <option value='Axew'>牙牙</option>
-                                        <option value='Fraxure'>斧牙龙</option>
-                                        <option value='Haxorus'>双斧战龙</option>
-                                        <option value='Cubchoo'>喷嚏熊</option>
-                                        <option value='Beartic'>冻原熊</option>
-                                        <option value='Cryogonal'>几何雪花</option>
-                                        <option value='Pawniard'>驹刀小兵</option>
-                                        <option value='Bisharp'>劈斩司令</option>
-                                        <option value='Rufflet'>毛头小鹰</option>
-                                        <option value='Braviary'>勇士雄鹰</option>
-                                        <option value='Deino'>单首龙</option>
-                                        <option value='Zweilous'>双首暴龙</option>
-                                        <option value='Hydreigon'>三首恶龙</option>
-                                        <option value='Larvesta'>燃烧虫</option>
-                                        <option value='Volcarona'>火神蛾</option>
-                                        <option value='Tornadus'>龙卷云</option>
-                                        <option value='Thundurus'>雷电云</option>
-                                        <option value='Landorus'>土地云</option>
-                                        <option value='Meloetta'>美洛耶塔</option>
-                                        <option value='Chespin'>哈力栗</option>
-                                        <option value='Quilladin'>胖胖哈力</option>
-                                        <option value='Chesnaught'>布里卡隆</option>
-                                        <option value='Fennekin'>火狐狸</option>
-                                        <option value='Braixen'>长尾火狐</option>
-                                        <option value='Delphox'>妖火红狐</option>
-                                        <option value='Froakie'>呱呱泡蛙</option>
-                                        <option value='Frogadier'>呱头蛙</option>
-                                        <option value='Greninja'>甲贺忍蛙</option>
-                                        <option value='Fletchling'>小箭雀</option>
-                                        <option value='Fletchinder'>火箭雀</option>
-                                        <option value='Talonflame'>烈箭鹰</option>
-                                        <option value='Scatterbug'>粉蝶虫</option>
-                                        <option value='Spewpa'>粉蝶蛹</option>
-                                        <option value='Vivillon'>彩粉蝶</option>
-                                        <option value='Litleo'>小狮狮</option>
-                                        <option value='Pyroar'>火炎狮</option>
-                                        <option value='Flabébé'>花蓓蓓</option>
-                                        <option value='Floette'>花叶蒂</option>
-                                        <option value='Florges'>花洁夫人</option>
-                                        <option value='Skiddo'>坐骑小羊</option>
-                                        <option value='Gogoat'>坐骑山羊</option>
-                                        <option value='Skrelp'>垃垃藻</option>
-                                        <option value='Dragalge'>毒藻龙</option>
-                                        <option value='Clauncher'>铁臂枪虾</option>
-                                        <option value='Clawitzer'>钢炮臂虾</option>
-                                        <option value='Sylveon'>仙子伊布</option>
-                                        <option value='Hawlucha'>摔角鹰人</option>
-                                        <option value='Dedenne'>咚咚鼠</option>
-                                        <option value='Carbink'>小碎钻</option>
-                                        <option value='Goomy'>黏黏宝</option>
-                                        <option value='Sliggoo'>黏美儿</option>
-                                        <option value='Goodra'>黏美龙</option>
-                                        <option value='Klefki'>钥圈儿</option>
-                                        <option value='Bergmite'>冰宝</option>
-                                        <option value='Avalugg'>冰岩怪</option>
-                                        <option value='Noibat'>嗡蝠</option>
-                                        <option value='Noivern'>音波龙</option>
-                                        <option value='Diancie'>蒂安希</option>
-                                        <option value='Hoopa'>胡帕</option>
-                                        <option value='Volcanion'>波尔凯尼恩</option>
-                                        <option value='Rowlet'>木木枭</option>
-                                        <option value='Dartrix'>投羽枭</option>
-                                        <option value='Decidueye'>狙射树枭</option>
-                                        <option value='Yungoos'>猫鼬少</option>
-                                        <option value='Gumshoos'>猫鼬探长</option>
-                                        <option value='Crabrawler'>好胜蟹</option>
-                                        <option value='Crabominable'>好胜毛蟹</option>
-                                        <option value='Oricorio'>花舞鸟</option>
-                                        <option value='Rockruff'>岩狗狗</option>
-                                        <option value='Lycanroc'>鬃岩狼人</option>
-                                        <option value='Mareanie'>好坏星</option>
-                                        <option value='Toxapex'>超坏星</option>
-                                        <option value='Mudbray'>泥驴仔</option>
-                                        <option value='Mudsdale'>重泥挽马</option>
-                                        <option value='Fomantis'>伪螳草</option>
-                                        <option value='Lurantis'>兰螳花</option>
-                                        <option value='Salandit'>夜盗火蜥</option>
-                                        <option value='Salazzle'>焰后蜥</option>
-                                        <option value='Bounsweet'>甜竹竹</option>
-                                        <option value='Steenee'>甜舞妮</option>
-                                        <option value='Tsareena'>甜冷美后</option>
-                                        <option value='Oranguru'>智挥猩</option>
-                                        <option value='Passimian'>投掷猴</option>
-                                        <option value='Sandygast'>沙丘娃</option>
-                                        <option value='Palossand'>噬沙堡爷</option>
-                                        <option value='Komala'>树枕尾熊</option>
-                                        <option value='Mimikyu'>谜拟丘</option>
-                                        <option value='Bruxish'>磨牙彩皮鱼</option>
-                                        <option value='Magearna'>玛机雅娜</option>
-                                        <option value='Grookey'>敲音猴</option>
-                                        <option value='Thwackey'>啪咚猴</option>
-                                        <option value='Rillaboom'>轰擂金刚猩</option>
-                                        <option value='Scorbunny'>炎兔儿</option>
-                                        <option value='Raboot'>腾蹴小将</option>
-                                        <option value='Cinderace'>闪焰王牌</option>
-                                        <option value='Sobble'>泪眼蜥</option>
-                                        <option value='Drizzile'>变涩蜥</option>
-                                        <option value='Inteleon'>千面避役</option>
-                                        <option value='Skwovet'>贪心栗鼠</option>
-                                        <option value='Greedent'>藏饱栗鼠</option>
-                                        <option value='Rookidee'>稚山雀</option>
-                                        <option value='Corvisquire'>蓝鸦</option>
-                                        <option value='Corviknight'>钢铠鸦</option>
-                                        <option value='Chewtle'>咬咬龟</option>
-                                        <option value='Drednaw'>暴噬龟</option>
-                                        <option value='Rolycoly'>小炭仔</option>
-                                        <option value='Carkol'>大炭车</option>
-                                        <option value='Coalossal'>巨炭山</option>
-                                        <option value='Applin'>啃果虫</option>
-                                        <option value='Flapple'>苹裹龙</option>
-                                        <option value='Appletun'>丰蜜龙</option>
-                                        <option value='Silicobra'>沙包蛇</option>
-                                        <option value='Sandaconda'>沙螺蟒</option>
-                                        <option value='Arrokuda'>刺梭鱼</option>
-                                        <option value='Barraskewda'>戽斗尖梭</option>
-                                        <option value='Toxel'>电音婴</option>
-                                        <option value='Toxtricity'>颤弦蝾螈</option>
-                                        <option value='Sinistea'>来悲茶</option>
-                                        <option value='Polteageist'>怖思壶</option>
-                                        <option value='Hatenna'>迷布莉姆</option>
-                                        <option value='Hattrem'>提布莉姆</option>
-                                        <option value='Hatterene'>布莉姆温</option>
-                                        <option value='Impidimp'>捣蛋小妖</option>
-                                        <option value='Morgrem'>诈唬魔</option>
-                                        <option value='Grimmsnarl'>长毛巨魔</option>
-                                        <option value='Perrserker'>喵头目</option>
-                                        <option value='Falinks'>列阵兵</option>
-                                        <option value='Pincurchin'>啪嚓海胆</option>
-                                        <option value='Snom'>雪吞虫</option>
-                                        <option value='Frosmoth'>雪绒蛾</option>
-                                        <option value='Stonjourner'>巨石丁</option>
-                                        <option value='Eiscue'>冰砌鹅</option>
-                                        <option value='Indeedee'>爱管侍</option>
-                                        <option value='Cufant'>铜象</option>
-                                        <option value='Copperajah'>大王铜象</option>
-                                        <option value='Dreepy'>多龙梅西亚</option>
-                                        <option value='Drakloak'>多龙奇</option>
-                                        <option value='Dragapult'>多龙巴鲁托</option>
-                                        <option value='Zacian'>苍响</option>
-                                        <option value='Zamazenta'>藏玛然特</option>
-                                        <option value='Eternatus'>无极汰那</option>
-                                        <option value='Kubfu'>熊徒弟</option>
-                                        <option value='Urshifu'>武道熊师</option>
-                                        <option value='Zarude'>萨戮德</option>
-                                        <option value='Regieleki'>雷吉艾勒奇</option>
-                                        <option value='Regidrago'>雷吉铎拉戈</option>
-                                        <option value='Glastrier'>雪暴马</option>
-                                        <option value='Spectrier'>灵幽马</option>
-                                        <option value='Calyrex'>蕾冠王</option>
-                                        <option value='Wyrdeer'>诡角鹿</option>
-                                        <option value='Kleavor'>劈斧螳螂</option>
-                                        <option value='Ursaluna'>月月熊</option>
-                                        <option value='Basculegion'>幽尾玄鱼</option>
-                                        <option value='Sneasler'>大狃拉</option>
-                                        <option value='Overqwil'>万针鱼</option>
-                                        <option value='Enamorus'>眷恋云</option>
-                                        <option value='Sprigatito'>新叶喵</option>
-                                        <option value='Floragato'>蒂蕾喵</option>
-                                        <option value='Meowscarada'>魔幻假面喵</option>
-                                        <option value='Fuecoco'>呆火鳄</option>
-                                        <option value='Crocalor'>炙烫鳄</option>
-                                        <option value='Skeledirge'>骨纹巨声鳄</option>
-                                        <option value='Quaxly'>润水鸭</option>
-                                        <option value='Quaxwell'>涌跃鸭</option>
-                                        <option value='Quaquaval'>狂欢浪舞鸭</option>
-                                        <option value='Lechonk'>爱吃豚</option>
-                                        <option value='Oinkologne'>飘香豚</option>
-                                        <option value='Tarountula'>团珠蛛</option>
-                                        <option value='Spidops'>操陷蛛</option>
-                                        <option value='Nymble'>豆蟋蟀</option>
-                                        <option value='Lokix'>烈腿蝗</option>
-                                        <option value='Pawmi'>布拨</option>
-                                        <option value='Pawmo'>布土拨</option>
-                                        <option value='Pawmot'>巴布土拨</option>
-                                        <option value='Tandemaus'>一对鼠</option>
-                                        <option value='Maushold'>一家鼠</option>
-                                        <option value='Fidough'>狗仔包</option>
-                                        <option value='Dachsbun'>麻花犬</option>
-                                        <option value='Smoliv'>迷你芙</option>
-                                        <option value='Dolliv'>奥利纽</option>
-                                        <option value='Arboliva'>奥利瓦</option>
-                                        <option value='Squawkabilly'>怒鹦哥</option>
-                                        <option value='Nacli'>盐石宝</option>
-                                        <option value='Naclstack'>盐石垒</option>
-                                        <option value='Garganacl'>盐石巨灵</option>
-                                        <option value='Charcadet'>炭小侍</option>
-                                        <option value='Armarouge'>红莲铠骑</option>
-                                        <option value='Ceruledge'>苍炎刃鬼</option>
-                                        <option value='Tadbulb'>光蚪仔</option>
-                                        <option value='Bellibolt'>电肚蛙</option>
-                                        <option value='Wattrel'>电海燕</option>
-                                        <option value='Kilowattrel'>大电海燕</option>
-                                        <option value='Maschiff'>偶叫獒</option>
-                                        <option value='Mabosstiff'>獒教父</option>
-                                        <option value='Shroodle'>滋汁鼹</option>
-                                        <option value='Grafaiai'>涂标客</option>
-                                        <option value='Bramblin'>纳噬草</option>
-                                        <option value='Brambleghast'>怖纳噬草</option>
-                                        <option value='Toedscool'>原野水母</option>
-                                        <option value='Toedscruel'>陆地水母</option>
-                                        <option value='Klawf'>毛崖蟹</option>
-                                        <option value='Capsakid'>热辣娃</option>
-                                        <option value='Scovillain'>狠辣椒</option>
-                                        <option value='Rellor'>虫滚泥</option>
-                                        <option value='Rabsca'>虫甲圣</option>
-                                        <option value='Flittle'>飘飘雏</option>
-                                        <option value='Espathra'>超能艳鸵</option>
-                                        <option value='Tinkatink'>小锻匠</option>
-                                        <option value='Tinkatuff'>巧锻匠</option>
-                                        <option value='Tinkaton'>巨锻匠</option>
-                                        <option value='Wiglett'>海地鼠</option>
-                                        <option value='Wugtrio'>三海地鼠</option>
-                                        <option value='Bombirdier'>下石鸟</option>
-                                        <option value='Finizen'>波普海豚</option>
-                                        <option value='Palafin'>海豚侠</option>
-                                        <option value='Varoom'>噗隆隆</option>
-                                        <option value='Revavroom'>普隆隆姆</option>
-                                        <option value='Cyclizar'>摩托蜥</option>
-                                        <option value='Orthworm'>拖拖蚓</option>
-                                        <option value='Glimmet'>晶光芽</option>
-                                        <option value='Glimmora'>晶光花</option>
-                                        <option value='Greavard'>墓仔狗</option>
-                                        <option value='Houndstone'>墓扬犬</option>
-                                        <option value='Flamigo'>缠红鹤</option>
-                                        <option value='Cetoddle'>走鲸</option>
-                                        <option value='Cetitan'>浩大鲸</option>
-                                        <option value='Veluza'>轻身鳕</option>
-                                        <option value='Dondozo'>吃吼霸</option>
-                                        <option value='Tatsugiri'>米立龙</option>
-                                        <option value='Annihilape'>弃世猴</option>
-                                        <option value='Clodsire'>土王</option>
-                                        <option value='Farigiraf'>奇麒麟</option>
-                                        <option value='Dudunsparce'>土龙节节</option>
-                                        <option value='Kingambit'>仆刀将军</option>
-                                        <option value='Great Tusk'>雄伟牙</option>
-                                        <option value='Scream Tail'>吼叫尾</option>
-                                        <option value='Brute Bonnet'>猛恶菇</option>
-                                        <option value='Flutter Mane'>振翼发</option>
-                                        <option value='Slither Wing'>爬地翅</option>
-                                        <option value='Sandy Shocks'>沙铁皮</option>
-                                        <option value='Iron Treads'>铁辙迹</option>
-                                        <option value='Iron Bundle'>铁包袱</option>
-                                        <option value='Iron Hands'>铁臂膀</option>
-                                        <option value='Iron Jugulis'>铁脖颈</option>
-                                        <option value='Iron Moth'>铁毒蛾</option>
-                                        <option value='Iron Thorns'>铁荆棘</option>
-                                        <option value='Frigibax'>凉脊龙</option>
-                                        <option value='Arctibax'>冻脊龙</option>
-                                        <option value='Baxcalibur'>戟脊龙</option>
-                                        <option value='Gimmighoul'>索财灵</option>
-                                        <option value='Gholdengo'>赛富豪</option>
-                                        <option value='Wo-Chien'>古简蜗</option>
-                                        <option value='Chien-Pao'>古剑豹</option>
-                                        <option value='Ting-Lu'>古鼎鹿</option>
-                                        <option value='Chi-Yu'>古玉鱼</option>
-                                        <option value='Roaring Moon'>轰鸣月</option>
-                                        <option value='Iron Valiant'>铁武者</option>
-                                        <option value='Koraidon'>故勒顿</option>
-                                        <option value='Miraidon'>密勒顿</option>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>形态</td>
-                                <td>
-                                    <select class="selectpicker" data-width="auto">
                                         <option>无</option>
                                     </select>
                                 </td>
@@ -1186,6 +703,7 @@
                                 <td>太晶属性</td>
                                 <td>
                                     <select id="teraType" class="selectpicker" data-width="auto">
+                                        <option value='None'>默认</option>
                                         <option value='Normal'>一般</option>
                                         <option value='Fighting'>格斗</option>
                                         <option value='Flying'>飞行</option>
@@ -1249,16 +767,16 @@
                                 <td class="iv">
                                     <div class="form-group form-inline">
                                         <input type="number" class="form-control" placeholder=""
-                                            style="width: 4em; display: inline;" value="31">
-                                        <input class="btn btn-info" type="button" value="0" onclick="toNumber(this)">
+                                            style="width: 4em; display: inline;" value="31" onchange="checkNum(this, 0, 31, 31)">
+                                        <input class="btn btn-info" type="button" value="Min" onclick="toNumberIV(this)">
                                     </div>
                                 </td>
                                 <td class="ev">
                                     <div class="form-group form-inline">
                                         <input type="number" class="form-control" placeholder=""
-                                            style="width: 5em; display: inline;">
+                                            style="width: 5em; display: inline;" onchange="checkNum(this, 0, 252, 252)">
                                         <input class="btn btn-info" type="button" value="Max"
-                                            onclick="toNumberEV(this, 252)">
+                                            onclick="toNumberEV(this)">
                                     </div>
                                 </td>
                             </tr>
@@ -1267,17 +785,17 @@
                                 <td class="iv">
                                     <div class="form-group form-inline">
                                         <input type="number" class="form-control" placeholder=""
-                                            style="width: 4em; display: inline;" value="31">
-                                        <input class="btn btn-info" type="button" value="0" onclick="toNumber(this)">
+                                            style="width: 4em; display: inline;" value="31" onchange="checkNum(this, 0, 31, 31)">
+                                        <input class="btn btn-info" type="button" value="Min" onclick="toNumberIV(this)">
                                     </div>
 
                                 </td>
                                 <td class="ev">
                                     <div class="form-group form-inline">
                                         <input type="number" class="form-control" placeholder=""
-                                            style="width: 5em; display: inline;">
+                                            style="width: 5em; display: inline;" onchange="checkNum(this, 0, 252, 252)">
                                         <input class="btn btn-info" type="button" value="Max"
-                                            onclick="toNumberEV(this, 252)">
+                                            onclick="toNumberEV(this)">
                                     </div>
                                 </td>
                             </tr>
@@ -1286,17 +804,17 @@
                                 <td class="iv">
                                     <div class="form-group form-inline">
                                         <input type="number" class="form-control" placeholder=""
-                                            style="width: 4em; display: inline;" value="31">
-                                        <input class="btn btn-info" type="button" value="0" onclick="toNumber(this)">
+                                            style="width: 4em; display: inline;" value="31" onchange="checkNum(this, 0, 31, 31)">
+                                        <input class="btn btn-info" type="button" value="Min" onclick="toNumberIV(this)">
                                     </div>
 
                                 </td>
                                 <td class="ev">
                                     <div class="form-group form-inline">
                                         <input type="number" class="form-control" placeholder=""
-                                            style="width: 5em; display: inline;">
+                                            style="width: 5em; display: inline;" onchange="checkNum(this, 0, 252, 252)">
                                         <input class="btn btn-info" type="button" value="Max"
-                                            onclick="toNumberEV(this, 252)">
+                                            onclick="toNumberEV(this)">
                                     </div>
                                 </td>
                             </tr>
@@ -1305,17 +823,17 @@
                                 <td class="iv">
                                     <div class="form-group form-inline">
                                         <input type="number" class="form-control" placeholder=""
-                                            style="width: 4em; display: inline;" value="31">
-                                        <input class="btn btn-info" type="button" value="0" onclick="toNumber(this)">
+                                            style="width: 4em; display: inline;" value="31" onchange="checkNum(this, 0, 31, 31)">
+                                        <input class="btn btn-info" type="button" value="Min" onclick="toNumberIV(this)">
                                     </div>
 
                                 </td>
                                 <td class="ev">
                                     <div class="form-group form-inline">
                                         <input type="number" class="form-control" placeholder=""
-                                            style="width: 5em; display: inline;">
+                                            style="width: 5em; display: inline;" onchange="checkNum(this, 0, 252, 252)">
                                         <input class="btn btn-info" type="button" value="Max"
-                                            onclick="toNumberEV(this, 252)">
+                                            onclick="toNumberEV(this)">
                                     </div>
                                 </td>
                             </tr>
@@ -1324,17 +842,17 @@
                                 <td class="iv">
                                     <div class="form-group form-inline">
                                         <input type="number" class="form-control" placeholder=""
-                                            style="width: 4em; display: inline;" value="31">
-                                        <input class="btn btn-info" type="button" value="0" onclick="toNumber(this)">
+                                            style="width: 4em; display: inline;" value="31" onchange="checkNum(this, 0, 31, 31)">
+                                        <input class="btn btn-info" type="button" value="Min" onclick="toNumberIV(this)">
                                     </div>
 
                                 </td>
                                 <td class="ev">
                                     <div class="form-group form-inline">
                                         <input type="number" class="form-control" placeholder=""
-                                            style="width: 5em; display: inline;">
+                                            style="width: 5em; display: inline;" onchange="checkNum(this, 0, 252, 252)">
                                         <input class="btn btn-info" type="button" value="Max"
-                                            onclick="toNumberEV(this, 252)">
+                                            onclick="toNumberEV(this)">
                                     </div>
                                 </td>
                             </tr>
@@ -1343,17 +861,17 @@
                                 <td class="iv">
                                     <div class="form-group form-inline">
                                         <input type="number" class="form-control" placeholder=""
-                                            style="width: 4em; display: inline;" value="31">
-                                        <input class="btn btn-info" type="button" value="0" onclick="toNumber(this)">
+                                            style="width: 4em; display: inline;" value="31" onchange="checkNum(this, 0, 31, 31)">
+                                        <input class="btn btn-info" type="button" value="Min" onclick="toNumberIV(this)">
                                     </div>
 
                                 </td>
                                 <td class="ev">
                                     <div class="form-group form-inline">
                                         <input type="number" class="form-control" placeholder=""
-                                            style="width: 5em; display: inline;">
+                                            style="width: 5em; display: inline;" onchange="checkNum(this, 0, 252, 252)">
                                         <input class="btn btn-info" type="button" value="Max"
-                                            onclick="toNumberEV(this, 252)">
+                                            onclick="toNumberEV(this)">
                                     </div>
                                 </td>
                             </tr>
@@ -1423,6 +941,12 @@
     <script src="dic.js"></script>
     <script>
         $(document).ready(function () {
+            let $species = $("#species");
+            $species.empty();
+            for(let s in dic_dict) {
+                $("#species").append('<option value="' + s + '">' + dic_dict[s][0] + '</option>');
+            }
+            $species.selectpicker('refresh');
             refresh();
             $("#species").change(function () {
                 refresh();
@@ -1431,7 +955,7 @@
 
         function refresh() {
             var species = $("#species").val();
-            var gender = dic_dict[species][0];
+            var gender = dic_dict[species][1];
             $("#gender").empty();
             if (gender == 0) {
                 $("#gender").append('<option value="male">公</option>');
@@ -1444,7 +968,7 @@
                 $("#gender").append('<option value="female">母</option>');
             }
             $("#gender").selectpicker('refresh');
-            var abilities = dic_dict[species][1];
+            var abilities = dic_dict[species][2];
             $("#ability").empty();
             $("#ability").append('<option value="' + dic_ablilities[[abilities[0]]][1] + '">' + dic_ablilities[abilities[0]][0] + '</option>');
             $("#ability").append('<option value="' + dic_ablilities[[abilities[1]]][1] + '">' + dic_ablilities[abilities[1]][0] + '</option>');
@@ -1461,9 +985,9 @@
         }
         function refreshMove($move, species) {
             $move.empty();
-            var moveIndexs = dic_dict[species][2];
+            var moveIndexs = dic_dict[species][3];
             $move.append('<option value="None">无</option>');
-            for (var i = 0; i < moveIndexs.length; i++) {
+            for (let i = 0; i < moveIndexs.length; i++) {
                 $move.append('<option value="' + dic_moves[moveIndexs[i]][1] + '">' + dic_moves[moveIndexs[i]][0] + '</option>');
             }
             $move.selectpicker('refresh');
@@ -1475,19 +999,26 @@
                 $o.val(defaultValue);
             }
         }
-        function toNumber(o) {
+        function toNumberIV(o) {
             var $o = $(o);
             var $prev = $o.prev();
-            if ($prev.val() == 0) {
-                $o.val("0");
+            if ($prev.val() == 0 || $o.val() == "Max") {
+                $o.val("Min");
                 $prev.val(31);
             } else {
-                $o.val("31");
+                $o.val("Max");
                 $prev.val(0);
             }
         }
-        function toNumberEV(o, value) {
+        function toNumberEV(o) {
+            var $o = $(o);
+            if ($o.val() == "Min") {
+                $o.prev().val(0);
+                $o.val("Max");
+                return;
+            }
             var count = 0;
+            var value = 252;
             $(".ev input[type='number']").each(function () {
                 count += this.value == "" ? 0 : parseInt(this.value);
             });
@@ -1495,8 +1026,12 @@
             if (count + value > 510) {
                 value = 510 - count;
             }
-            var $o = $(o);
             $o.prev().val(value);
+            if (value == 0) {
+                $o.val("Max");
+            } else {
+                $o.val("Min");
+            }
         }
         function exportPS() {
             var text = "";
@@ -1548,7 +1083,8 @@
                 + (ivs[5].value == "" ? 0 : ivs[5].value) + " Spe \n";
 
             var teraType = $("#teraType").val();
-            text += "Tera Type: " + teraType + "\n";
+            if (teraType != "None")
+                text += "Tera Type: " + teraType + "\n";
             var language = $("#language").val();
             text += "Language: " + language + "\n";
             var scale = $("#scale").val();
@@ -1574,9 +1110,23 @@
             }
             new ClipboardJS("#exportPS");
             $("#exportPS").attr("data-clipboard-text", text);
+            $("#exportPS").popover("show");
+            setTimeout(function(){$("#exportPS").popover("hide");}, 2000);
             console.log(text);
         }
-
+        function showPopover(target, msg) {
+            target.attr("data-original-title", msg);
+            $('[data-toggle="tooltip"]').tooltip();
+            target.tooltip('show');
+            target.focus();
+            //2秒后消失提示框
+            var id = setTimeout(
+                function () {
+                    target.attr("data-original-title", "");
+                    target.tooltip('hide');
+                }, 2000
+            );
+        }
     </script>
 </body>
 
