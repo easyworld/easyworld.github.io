@@ -442,7 +442,7 @@
             } else if (gender == 254) {
                 $("#gender").append('<option>母</option>');
             } else if (gender == 255) {
-                $("#gender").append('<option value="female">无性别</option>');
+                $("#gender").append('<option value="genderless">无性别</option>');
             } else {
                 $("#gender").append('<option value="male">公</option>');
                 $("#gender").append('<option value="female">母</option>');
@@ -523,6 +523,7 @@
             }
             if (gender == "male") text += " (M)";
             else if (gender == "female") text += " (F)";
+            else if (gender == "Genderless") text += "";
             var heldItem = $("#heldItem").val();
             if (heldItem != "None") {
                 text += " @ " + heldItem + "\n";
