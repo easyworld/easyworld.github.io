@@ -1,0 +1,596 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>宝可梦ZA小助手</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.18/dist/css/bootstrap-select.min.css">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <a class="navbar-brand" href="https://space.bilibili.com/1339783">
+                    宝可梦ZA小助手 <span style="font-size: small;">by <span style="text-decoration: underline;">easy_world</span></span>
+                </a>
+                <button id="exportPS" type="button" class="btn btn-default navbar-btn" onclick="exportPS()" data-toggle="popover" data-placement="left" data-content="已复制" 
+                    style="position: absolute; right: 0;margin-right: 8px;">导出</button>
+            </div>
+
+        </div><!-- /.container-fluid -->
+    </nav>
+    <div class="container">
+        <div>
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab"
+                        data-toggle="tab">基础</a></li>
+                <li role="presentation"><a href="#ivev" aria-controls="ivev" role="tab" data-toggle="tab">能力值</a></li>
+                <li role="presentation"><a href="#moves" aria-controls="moves" role="tab" data-toggle="tab">招式</a></li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="home">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td>名称</td>
+                                <td>
+                                    <select id="species" class="selectpicker" data-live-search="true" data-width="auto">
+                                        <option>无</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>性别</td>
+                                <td>
+                                    <select id="gender" class="selectpicker" data-width="auto">
+                                        <option>无</option>
+                                        <option>公</option>
+                                        <option>母</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>持有物</td>
+                                <td>
+                                    <select id="heldItem" class="selectpicker" data-live-search="true"
+                                        data-width="auto">
+                                        <option value='None'>无</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>等级</td>
+                                <td>
+                                    <div class="form-group">
+                                        <input type="number" class="form-control" id="level" placeholder="1-100"
+                                            onchange="checkNum(this, 1, 100, 100)" style="width: 6em;">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>异色</td>
+                                <td>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" id="isShiny">
+                                        </label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>头目</td>
+                                <td>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" id="isAlpha">
+                                        </label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>球种</td>
+                                <td>
+                                    <select id="ball" class="selectpicker" data-live-search="true" data-width="auto">
+                                        <option value='None'>无</optional>
+                                        <option value='Master Ball'>大师球</optional>
+                                        <option value='Ultra Ball'>高级球</optional>
+                                        <option value='Great Ball'>超级球</optional>
+                                        <option value='Poké Ball'>精灵球</optional>
+                                        <option value='Safari Ball'>狩猎球</optional>
+                                        <option value='Net Ball'>捕网球</optional>
+                                        <option value='Dive Ball'>潜水球</optional>
+                                        <option value='Nest Ball'>巢穴球</optional>
+                                        <option value='Repeat Ball'>重复球</optional>
+                                        <option value='Timer Ball'>计时球</optional>
+                                        <option value='Luxury Ball'>豪华球</optional>
+                                        <option value='Premier Ball'>纪念球</optional>
+                                        <option value='Dusk Ball'>黑暗球</optional>
+                                        <option value='Heal Ball'>治愈球</optional>
+                                        <option value='Quick Ball'>先机球</optional>
+                                        <option value='Cherish Ball'>贵重球</optional>
+                                        <option value='Fast Ball'>速度球</optional>
+                                        <option value='Level Ball'>等级球</optional>
+                                        <option value='Lure Ball'>诱饵球</optional>
+                                        <option value='Heavy Ball'>沉重球</optional>
+                                        <option value='Love Ball'>甜蜜球</optional>
+                                        <option value='Friend Ball'>友友球</optional>
+                                        <option value='Moon Ball'>月亮球</optional>
+                                        <option value='Sport Ball'>竞赛球</optional>
+                                        <option value='Dream Ball'>梦境球</optional>
+                                        <option value='Beast Ball'>究极球</optional>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>特性</td>
+                                <td>
+                                    <select id="ability" class="selectpicker" data-width="auto">
+                                        <option>大力士</option>
+                                        <option>好家伙</option>
+                                        <option>梦特</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>性格</td>
+                                <td>
+                                    <select id="nature" class="selectpicker" data-live-search="true" data-width="auto">
+                                        <option value='Hardy'>勤奋</option>
+                                        <option value='Lonely'>怕寂寞</option>
+                                        <option value='Brave'>勇敢</option>
+                                        <option value='Adamant'>固执</option>
+                                        <option value='Naughty'>顽皮</option>
+                                        <option value='Bold'>大胆</option>
+                                        <option value='Docile'>坦率</option>
+                                        <option value='Relaxed'>悠闲</option>
+                                        <option value='Impish'>淘气</option>
+                                        <option value='Lax'>乐天</option>
+                                        <option value='Timid'>胆小</option>
+                                        <option value='Hasty'>急躁</option>
+                                        <option value='Serious'>认真</option>
+                                        <option value='Jolly'>爽朗</option>
+                                        <option value='Naive'>天真</option>
+                                        <option value='Modest'>内敛</option>
+                                        <option value='Mild'>慢吞吞</option>
+                                        <option value='Quiet'>冷静</option>
+                                        <option value='Bashful'>害羞</option>
+                                        <option value='Rash'>马虎</option>
+                                        <option value='Calm'>温和</option>
+                                        <option value='Gentle'>温顺</option>
+                                        <option value='Sassy'>自大</option>
+                                        <option value='Careful'>慎重</option>
+                                        <option value='Quirky'>浮躁</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>语言</td>
+                                <td>
+                                    <select id="language" class="selectpicker" data-width="auto">
+                                        <option value="Japanese">日语</option>
+                                        <option value="English">英语</option>
+                                        <option value="French">法语</option>
+                                        <option value="Italian">意大利语</option>
+                                        <option value="German">德语</option>
+                                        <option value="Spanish">西班牙语</option>
+                                        <option value="Korean">韩语</option>
+                                        <option value="ChineseS" selected>简体中文</option>
+                                        <option value="ChineseT">繁体中文</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>体型</td>
+                                <td>
+                                    <div class="form-group">
+                                        <input id="scale" type="number" class="form-control" id="level"
+                                            placeholder="0-255" onchange="checkNum(this, 0, 255, 128)"
+                                            style="width: 6em;">
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="ivev">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td style="width: 44px;"></td>
+                                <td>个体值 0~31</td>
+                                <td>努力值 0~252</td>
+                            </tr>
+                            <tr>
+                                <td style="width: 44px;">HP</td>
+                                <td class="iv">
+                                    <div class="form-group form-inline">
+                                        <input type="number" class="form-control" placeholder=""
+                                            style="width: 4em; display: inline;" value="31" onchange="checkNum(this, 0, 31, 31)">
+                                        <input class="btn btn-info" type="button" value="Min" onclick="toNumberIV(this)">
+                                    </div>
+                                </td>
+                                <td class="ev">
+                                    <div class="form-group form-inline">
+                                        <input type="number" class="form-control" placeholder=""
+                                            style="width: 5em; display: inline;" onchange="checkNum(this, 0, 252, 252)">
+                                        <input class="btn btn-info" type="button" value="Max"
+                                            onclick="toNumberEV(this)">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 44px;">攻击</td>
+                                <td class="iv">
+                                    <div class="form-group form-inline">
+                                        <input type="number" class="form-control" placeholder=""
+                                            style="width: 4em; display: inline;" value="31" onchange="checkNum(this, 0, 31, 31)">
+                                        <input class="btn btn-info" type="button" value="Min" onclick="toNumberIV(this)">
+                                    </div>
+
+                                </td>
+                                <td class="ev">
+                                    <div class="form-group form-inline">
+                                        <input type="number" class="form-control" placeholder=""
+                                            style="width: 5em; display: inline;" onchange="checkNum(this, 0, 252, 252)">
+                                        <input class="btn btn-info" type="button" value="Max"
+                                            onclick="toNumberEV(this)">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 44px;">防御</td>
+                                <td class="iv">
+                                    <div class="form-group form-inline">
+                                        <input type="number" class="form-control" placeholder=""
+                                            style="width: 4em; display: inline;" value="31" onchange="checkNum(this, 0, 31, 31)">
+                                        <input class="btn btn-info" type="button" value="Min" onclick="toNumberIV(this)">
+                                    </div>
+
+                                </td>
+                                <td class="ev">
+                                    <div class="form-group form-inline">
+                                        <input type="number" class="form-control" placeholder=""
+                                            style="width: 5em; display: inline;" onchange="checkNum(this, 0, 252, 252)">
+                                        <input class="btn btn-info" type="button" value="Max"
+                                            onclick="toNumberEV(this)">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 44px;">特攻</td>
+                                <td class="iv">
+                                    <div class="form-group form-inline">
+                                        <input type="number" class="form-control" placeholder=""
+                                            style="width: 4em; display: inline;" value="31" onchange="checkNum(this, 0, 31, 31)">
+                                        <input class="btn btn-info" type="button" value="Min" onclick="toNumberIV(this)">
+                                    </div>
+
+                                </td>
+                                <td class="ev">
+                                    <div class="form-group form-inline">
+                                        <input type="number" class="form-control" placeholder=""
+                                            style="width: 5em; display: inline;" onchange="checkNum(this, 0, 252, 252)">
+                                        <input class="btn btn-info" type="button" value="Max"
+                                            onclick="toNumberEV(this)">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 44px;">特防</td>
+                                <td class="iv">
+                                    <div class="form-group form-inline">
+                                        <input type="number" class="form-control" placeholder=""
+                                            style="width: 4em; display: inline;" value="31" onchange="checkNum(this, 0, 31, 31)">
+                                        <input class="btn btn-info" type="button" value="Min" onclick="toNumberIV(this)">
+                                    </div>
+
+                                </td>
+                                <td class="ev">
+                                    <div class="form-group form-inline">
+                                        <input type="number" class="form-control" placeholder=""
+                                            style="width: 5em; display: inline;" onchange="checkNum(this, 0, 252, 252)">
+                                        <input class="btn btn-info" type="button" value="Max"
+                                            onclick="toNumberEV(this)">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 44px;">速度</td>
+                                <td class="iv">
+                                    <div class="form-group form-inline">
+                                        <input type="number" class="form-control" placeholder=""
+                                            style="width: 4em; display: inline;" value="31" onchange="checkNum(this, 0, 31, 31)">
+                                        <input class="btn btn-info" type="button" value="Min" onclick="toNumberIV(this)">
+                                    </div>
+
+                                </td>
+                                <td class="ev">
+                                    <div class="form-group form-inline">
+                                        <input type="number" class="form-control" placeholder=""
+                                            style="width: 5em; display: inline;" onchange="checkNum(this, 0, 252, 252)">
+                                        <input class="btn btn-info" type="button" value="Max"
+                                            onclick="toNumberEV(this)">
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="moves">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td>招式1</td>
+                                <td>
+                                    <select id="move1" class="selectpicker" data-live-search="true" data-width="auto">
+                                        <option>击掌奇袭</option>
+                                        <option>喷射火焰</option>
+                                        <option>龙爪</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>招式2</td>
+                                <td>
+                                    <select id="move2" class="selectpicker" data-live-search="true" data-width="auto">
+                                        <option>击掌奇袭</option>
+                                        <option>喷射火焰</option>
+                                        <option>龙爪</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>招式3</td>
+                                <td>
+                                    <select id="move3" class="selectpicker" data-live-search="true" data-width="auto">
+                                        <option>击掌奇袭</option>
+                                        <option>喷射火焰</option>
+                                        <option>龙爪</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>招式4</td>
+                                <td>
+                                    <select id="move4" class="selectpicker" data-live-search="true" data-width="auto">
+                                        <option>击掌奇袭</option>
+                                        <option>喷射火焰</option>
+                                        <option>龙爪</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+        integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ"
+        crossorigin="anonymous"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js"
+        integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.18/js/bootstrap-select.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.10/dist/clipboard.min.js"></script>
+    <script src="dic.js?v=20240102"></script>
+    <script>
+        $(document).ready(function () {
+            let $species = $("#species");
+            $species.empty();
+            for(let s in dic_dict) {
+                $("#species").append('<option value="' + s + '">' + dic_dict[s][0] + '</option>');
+            }
+            $species.selectpicker('refresh');
+            let $heldItem = $("#heldItem");
+            $heldItem.empty();
+            for (let i = 0; i < dic_items.length; i++) {
+                $heldItem.append('<option value="' + dic_items[i][1] + '">' + dic_items[i][0] + '</option>');
+            }
+            refresh();
+            $("#species").change(function () {
+                refresh();
+            });
+        });
+
+        function refresh() {
+            var species = $("#species").val();
+            var gender = dic_dict[species][1];
+            $("#gender").empty();
+            if (gender == 0) {
+                $("#gender").append('<option value="male">公</option>');
+            } else if (gender == 254) {
+                $("#gender").append('<option value="female">母</option>');
+            } else if (gender == 255) {
+                $("#gender").append('<option>无性别</option>');
+            } else {
+                $("#gender").append('<option value="male">公</option>');
+                $("#gender").append('<option value="female">母</option>');
+            }
+            $("#gender").selectpicker('refresh');
+            var abilities = dic_dict[species][2];
+            $("#ability").empty();
+            $("#ability").append('<option value="' + dic_abilities[[abilities[0]]][1] + '">' + dic_abilities[abilities[0]][0] + '</option>');
+            $("#ability").append('<option value="' + dic_abilities[[abilities[1]]][1] + '">' + dic_abilities[abilities[1]][0] + '</option>');
+            $("#ability").append('<option value="' + dic_abilities[[abilities[2]]][1] + '">' + dic_abilities[abilities[2]][0] + '</option>');
+            $("#ability").selectpicker('refresh');
+            refreshMoves(species);
+        }
+
+        function refreshMoves(species) {
+            refreshMove($("#move1"), species);
+            refreshMove($("#move2"), species);
+            refreshMove($("#move3"), species);
+            refreshMove($("#move4"), species);
+        }
+        function refreshMove($move, species) {
+            $move.empty();
+            var moveIndexs = dic_dict[species][3];
+            $move.append('<option value="None">无</option>');
+            for (let i = 0; i < moveIndexs.length; i++) {
+                $move.append('<option value="' + dic_moves[moveIndexs[i]][1] + '">' + dic_moves[moveIndexs[i]][0] + '</option>');
+            }
+            $move.selectpicker('refresh');
+        }
+        function checkNum(o, start, end, defaultValue) {
+            var $o = $(o);
+            var value = $o.val();
+            if (value < start || end < value) {
+                $o.val(defaultValue);
+            }
+        }
+        function toNumberIV(o) {
+            var $o = $(o);
+            var $prev = $o.prev();
+            if ($prev.val() == 0 || $o.val() == "Max") {
+                $o.val("Min");
+                $prev.val(31);
+            } else {
+                $o.val("Max");
+                $prev.val(0);
+            }
+        }
+        function toNumberEV(o) {
+            var $o = $(o);
+            if ($o.val() == "Min") {
+                $o.prev().val(0);
+                $o.val("Max");
+                return;
+            }
+            var count = 0;
+            var value = 252;
+            $(".ev input[type='number']").each(function () {
+                count += this.value == "" ? 0 : parseInt(this.value);
+            });
+            if (count > 510) return;
+            if (count + value > 510) {
+                value = 510 - count;
+            }
+            $o.prev().val(value);
+            if (value == 0) {
+                $o.val("Max");
+            } else {
+                $o.val("Min");
+            }
+        }
+        function exportPS() {
+            var text = "";
+            var species = $("#species").val();
+            text += species;
+            var gender = $("#gender").val();
+            if (gender == "female" && (species == "Meowstic" || species == "Indeedee" || species == "Basculegion " || species == "Oinkologne")) {
+                species += "-F";
+            }
+            if (gender == "male") text += " (M)";
+            else if (gender == "female") text += " (F)";
+            var heldItem = $("#heldItem").val();
+            if (heldItem != "None") {
+                text += " @ " + heldItem + "\n";
+            } else {
+                text += "\n";
+            }
+
+            var level = $("#level").val();
+            if (level != null && level > 0 && level <= 100) {
+                text += "Level: " + level + "\n";
+            }
+            if ($("#isShiny").prop('checked')) {
+                text += "Shiny: Yes\n";
+            }
+            if ($("#isAlpha").prop('checked')) {
+                text += "Alpha: Yes\n";
+            }
+            var ball = $("#ball").val();
+            if (ball != "None") {
+                text += "Ball: " + ball + "\n";
+            }
+            var ability = $("#ability").val();
+            text += "Ability: " + ability + "\n";
+            var nature = $("#nature").val();
+            text += nature + " Nature\n";
+
+            var evs = $(".ev input[type='number']");
+            text += "EVs: " + (evs[0].value == "" ? 0 : evs[0].value) + " HP / "
+                + (evs[1].value == "" ? 0 : evs[1].value) + " Atk / "
+                + (evs[2].value == "" ? 0 : evs[2].value) + " Def / "
+                + (evs[3].value == "" ? 0 : evs[3].value) + " SpA / "
+                + (evs[4].value == "" ? 0 : evs[4].value) + " SpD / "
+                + (evs[5].value == "" ? 0 : evs[5].value) + " Spe \n";
+
+            var ivs = $(".iv input[type='number']");
+            text += "IVs: " + (ivs[0].value == "" ? 0 : ivs[0].value) + " HP / "
+                + (ivs[1].value == "" ? 0 : ivs[1].value) + " Atk / "
+                + (ivs[2].value == "" ? 0 : ivs[2].value) + " Def / "
+                + (ivs[3].value == "" ? 0 : ivs[3].value) + " SpA / "
+                + (ivs[4].value == "" ? 0 : ivs[4].value) + " SpD / "
+                + (ivs[5].value == "" ? 0 : ivs[5].value) + " Spe \n";
+
+            var language = $("#language").val();
+            text += "Language: " + language + "\n";
+            var scale = $("#scale").val();
+            if (scale != "" && scale >= 0 && scale <= 255) {
+                text += ".Scale=" + scale + "\n";
+            }
+
+            var move1 = $("#move1").val();
+            var move2 = $("#move2").val();
+            var move3 = $("#move3").val();
+            var move4 = $("#move4").val();
+            if (move1 != "None") {
+                text += "-" + move1 + "\n";
+            }
+            if (move2 != "None") {
+                text += "-" + move2 + "\n";
+            }
+            if (move3 != "None") {
+                text += "-" + move3 + "\n";
+            }
+            if (move4 != "None") {
+                text += "-" + move4 + "\n";
+            }
+            new ClipboardJS("#exportPS");
+            $("#exportPS").attr("data-clipboard-text", text);
+            $("#exportPS").popover("show");
+            setTimeout(function(){$("#exportPS").popover("hide");}, 2000);
+            console.log(text);
+        }
+        function showPopover(target, msg) {
+            target.attr("data-original-title", msg);
+            $('[data-toggle="tooltip"]').tooltip();
+            target.tooltip('show');
+            target.focus();
+            //2秒后消失提示框
+            var id = setTimeout(
+                function () {
+                    target.attr("data-original-title", "");
+                    target.tooltip('hide');
+                }, 2000
+            );
+        }
+    </script>
+</body>
+
+</html>
