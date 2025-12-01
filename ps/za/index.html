@@ -549,7 +549,9 @@
                 + (ivs[5].value == "" ? 0 : ivs[5].value) + " Spe \n";
 
             var language = $("#language").val();
-            text += "Language: " + language + "\n";
+            if (language != "ChineseS") {
+                text += "Language: " + language + "\n";
+            }
             var scale = $("#scale").val();
             if (scale != "" && scale >= 0 && scale <= 255) {
                 text += ".Scale=" + scale + "\n";
@@ -592,5 +594,6 @@
         }
     </script>
 </body>
+
 
 </html>
